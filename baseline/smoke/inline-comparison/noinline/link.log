@@ -1,0 +1,1 @@
+/opt/homebrew/opt/riscv64-elf-binutils/bin/riscv64-elf-ld: warning: noinline/dot.elf has a LOAD segment with RWX permissions

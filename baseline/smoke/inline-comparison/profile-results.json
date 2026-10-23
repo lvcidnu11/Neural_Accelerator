@@ -1,0 +1,35 @@
+{
+  "inline": {
+    "instructions_by_region": {
+      "startup": 11,
+      "main": 36
+    },
+    "main_and_callees": 36,
+    "mix": {
+      "other": 20,
+      "load": 8,
+      "multiply": 4,
+      "conditional_branch": 4
+    },
+    "macs": 4,
+    "mac_per_instruction": 0.1111111111111111,
+    "startup_through_success_store": 47
+  },
+  "noinline": {
+    "instructions_by_region": {
+      "startup": 11,
+      "main": 7,
+      "dot8_t": 33
+    },
+    "main_and_callees": 40,
+    "mix": {
+      "other": 23,
+      "conditional_branch": 5,
+      "load": 8,
+      "multiply": 4
+    },
+    "macs": 4,
+    "mac_per_instruction": 0.1,
+    "startup_through_success_store": 51
+  }
+}

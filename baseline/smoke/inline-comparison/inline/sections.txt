@@ -1,0 +1,10 @@
+inline/dot.elf  :
+section             size         addr
+.text                132   2147483648
+.srodata              12   2147483784
+.tohost               72   2147483840
+.riscv.attributes     54            0
+.comment              18            0
+Total                288
+
+

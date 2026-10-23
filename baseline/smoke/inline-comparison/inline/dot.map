@@ -1,0 +1,66 @@
+
+Merging object attributes
+
+
+There are no discarded input sections
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+RAM              0x0000000080000000 0x0000000002000000 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD inline/start.o
+LOAD inline/dot.o
+
+.text           0x0000000080000000       0x84
+ *(.text.init)
+ .text.init     0x0000000080000000       0x2c inline/start.o
+                0x0000000080000000                _start
+ *(.text .text.*)
+ .text          0x000000008000002c        0x0 inline/start.o
+ .text          0x000000008000002c       0x26 inline/dot.o
+                0x000000008000002c                dot8_t
+ .text.startup  0x0000000080000052       0x32 inline/dot.o
+                0x0000000080000052                main
+
+.srodata        0x0000000080000088        0xc
+ .srodata       0x0000000080000088        0xc inline/dot.o
+
+.rela.dyn       0x0000000080000098        0x0
+ .rela.text.init
+                0x0000000080000098        0x0 inline/start.o
+
+.tohost         0x00000000800000c0       0x48
+ *(.tohost)
+ .tohost        0x00000000800000c0       0x48 inline/start.o
+                0x00000000800000c0                tohost
+                0x0000000080000100                fromhost
+                0x0000000082000000                _stack_top = (ORIGIN (RAM) + LENGTH (RAM))
+OUTPUT(inline/dot.elf elf64-littleriscv)
+
+.data           0x0000000080000108        0x0
+ .data          0x0000000080000108        0x0 inline/start.o
+ .data          0x0000000080000108        0x0 inline/dot.o
+
+.bss            0x0000000080000108        0x0
+ .bss           0x0000000080000108        0x0 inline/start.o
+ .bss           0x0000000080000108        0x0 inline/dot.o
+
+.riscv.attributes
+                0x0000000000000000       0x36
+ .riscv.attributes
+                0x0000000000000000       0x34 inline/start.o
+ .riscv.attributes
+                0x0000000000000034       0x36 inline/dot.o
+
+.comment        0x0000000000000000       0x12
+ .comment       0x0000000000000000       0x12 inline/dot.o
+                                         0x13 (size before relaxing)
+
+.note.GNU-stack
+                0x0000000000000000        0x0
+ .note.GNU-stack
+                0x0000000000000000        0x0 inline/dot.o

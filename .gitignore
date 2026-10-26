@@ -1,0 +1,14 @@
+build/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Downloaded tools/models and generated experiment outputs (recreate with scripts/).
+**/vendor/
+**/.venv/
+**/.pip-cache/
+**/weights/
+/experiments/deit-tiny-inspect/results/
+*.part
+*.dylib
+*.so

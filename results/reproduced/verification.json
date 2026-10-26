@@ -1,0 +1,27 @@
+{
+  "verified_at": "2026-10-25T15:02:58.099060+08:00",
+  "commands_passed": [
+    "python3 scripts/project.py setup",
+    "python3 scripts/project.py test",
+    "python3 scripts/project.py bench",
+    "python3 scripts/project.py full",
+    "python3 scripts/publish_results.py"
+  ],
+  "checks": [
+    "ISA/tile, FC1, FC1-GELU and blocking/fusion retired counts match preserved reference",
+    "Full inference retired count, instruction mix and model SHA256 match preserved reference",
+    "Host and UBSan full inference: 14 nodes, 12 blocks, 1000 exact logits",
+    "Root documentation links exist; new source/output artifact audit passed; git diff --check passed"
+  ],
+  "fixes": [
+    "Relative checkpoint paths and full SHA256 verification",
+    "Independent full-model library/plugin builds",
+    "Renamed full-model profile.py to profile_spike.py to avoid Python standard-library shadowing"
+  ],
+  "source_location": "Course project repository; original ChatGPT mirror is not needed",
+  "git_actions": "No staging, commit or push performed during the 2026-10-25 verification; subsequent local commits are documented in docs/submission.md",
+  "limitations": [
+    "Local cached dependencies reused and setup verified; a separate fresh clone was not exercised",
+    "No new hardware timing/area, dataset accuracy or full-model baseline result"
+  ]
+}

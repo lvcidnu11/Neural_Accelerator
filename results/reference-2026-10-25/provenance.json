@@ -1,0 +1,62 @@
+{
+  "note": "Measured functional Spike counts. Absolute source-root paths replaced with <repo>. See EXPERIMENTS.md for scope and limitations.",
+  "files": {
+    "isa-tile.json": {
+      "original_path": "experiments/qmac8-requant-spike/build/comparison.json",
+      "original_sha256": "750e201cc43bd6c7bb6950995c7d84f5439347a13f4f98a60301f744aa8c67e1"
+    },
+    "fc1.json": {
+      "original_path": "experiments/tflm-linear/build/comparison.json",
+      "original_sha256": "2acd6ad175528c75da99464829f50769628d40ffc30bbbb9e6cf6f6faf069a2f"
+    },
+    "fc1-gelu.json": {
+      "original_path": "experiments/tflm-linear/build/comparison-gelu.json",
+      "original_sha256": "ea95dd546b51b02b2119fd408e10f6ca868e10c3bed2fda0d657654ad459017a"
+    },
+    "blocking-fusion.json": {
+      "original_path": "experiments/tflm-linear/build/optimizations.json",
+      "original_sha256": "cca0b2c37148658c83c9037668fea6b5cf0e7a8d4d4b3c436bfd32f42e3f5263"
+    },
+    "full-inference.json": {
+      "original_path": "experiments/deit-full-int8/build/profile.json",
+      "original_sha256": "ca6019cbae04bbf79e5f909db87a232d5eb04fe4f69c31a59a6e15240a565128"
+    }
+  },
+  "source_sha256": {
+    "experiments/qmac8-requant-spike/tail_tests.c": "4a3a17c63d4ae77d84b246dccd4437428a65a8d80376108e84f6baefc5dacb44",
+    "experiments/qmac8-requant-spike/run.py": "91da99be9229675f7fe0a5722c51eb19547b0ad91d4ffdf7cea7cfe8033a7253",
+    "experiments/qmac8-requant-spike/kernel.c": "fcf740c318c385c2bf380c19c3990b371ef2c1da58af7c52bc984831ef445508",
+    "experiments/qmac8-requant-spike/requant8.h": "07ebbca688c00be4da94ffe332148776a601d16fd7552f0280c37fcea87a7973",
+    "experiments/qmac8-requant-spike/instruction_tests.c": "391287cc26c3614813a9535a599abcc26f8401c7e5f9bf9f892d3ce832d478b7",
+    "experiments/qmac8-requant-spike/profile.py": "d5274589b6c9c55655a7b95d2f0e17875c18bc5a4553539a591ccdc2a3d896e0",
+    "experiments/qmac8-requant-spike/extension.cc": "ef10b666d2cad65771cd32debceb838a6bc9428dc5e073baf56c8879ef154fef",
+    "experiments/qmac8-requant-spike/generate_requant_tests.py": "2b578721584d389017319ddb769642ac1bc215461fd3fdbba04a33bc63277e3e",
+    "experiments/qmac8-requant-spike/requant_tests.c": "acbfeb7aca55731c8b1e99f30805432a0335c5c253a5cf3a238fe538635d1238",
+    "experiments/qmac8-requant-spike/main.c": "7dc18273b95b9ea072c5a0d98726eeb95fe2aebc4da20c459c837e611b67f89f",
+    "experiments/qmac8-requant-spike/kernel.h": "e2fe4cc1cea107f3967c4a00b19cb4f51846a9da2059060dd4d9cc340fdf9da2",
+    "experiments/qmac8-requant-spike/generate_tests.py": "06bd09dd5bf50ba677f38085b5c55e48de5e23c7b288b421ebb9ab032d2e95d5",
+    "experiments/qmac8-requant-spike/qmac8.h": "2e70086896dfd948ac84ea48865de622fe7241c615d4f5280e08ed29a95f7023",
+    "experiments/tflm-linear/bootstrap.py": "902f9ca90582fde53fb227781eb28b85de85cd6f9d1e2f9f02bdfb6c49831cbf",
+    "experiments/tflm-linear/main.cc": "6c60d4707b3d8009d46e96db7c7e3b39f95dc6ac8ffb316a14b3f61fd2852392",
+    "experiments/tflm-linear/export_model.py": "f3a0a088d8f4d6f43ed35581c162e6f2cdc7f51d489e6ef64562ccc3bbc1bb89",
+    "experiments/tflm-linear/build.py": "e9ee16cbcf0c7340397608d833852c5435f029b6b22ecbc400cf4e5867247f03",
+    "experiments/tflm-linear/compare_stages.py": "8fdb57941184f2d639e965da0d75c2064260598db3c8340d7ae67bce5d0ef6f0",
+    "experiments/tflm-linear/run.py": "d7df60ed35a4eba5f534a5487960ed3edc5ccedd76ecc4391a8f16776b3f5a2e",
+    "experiments/tflm-linear/fc_adapter.cc": "0918d20ea340445e8b0d39cea5d2d51a19deb1a1b2dd87b8c2c1b3f39ff9588e",
+    "experiments/tflm-linear/blocking_tests.cc": "f8358016cd7954de044d35299dfbb57becaba89debcc85b2a694871d30d426ce",
+    "experiments/tflm-linear/linear_kernel.h": "6c9e4787a2c1141bb252654bd08008e181b6d089e15774fbd18cec595ff93124",
+    "experiments/tflm-linear/platform.cc": "aec1595d9bcb22ddfd99c39f4cdc173d0404103c37892f6ee104f6774b911717",
+    "experiments/tflm-linear/profile.py": "6b64baeb48277d0fc9ee9a27ef1b4ecac5c61e16333c4a580becafa739f76c2a",
+    "experiments/tflm-linear/report_optimizations.py": "657834ab01a38f5d0eb601a37c41d85fe28dc3cc4505b1a8dfb692bd02bb7d45",
+    "experiments/tflm-linear/link.ld": "482e3f83aeb6fed88f6af6730c91593f737f4dfb0fc945a8280228d6f7ee35b9",
+    "experiments/tflm-linear/benchmark_optimizations.py": "3f2f84da5bdc673e299ee44bcf16d0c5cb2238109729d0aebc8719a730c11578",
+    "experiments/tflm-linear/start.S": "0c87d24ef0e16cc59e0735f1b76abe37c6ca605aa11a447f33d9be3c84347dad",
+    "experiments/tflm-linear/gelu_lut.cc": "9aeb15a3ee5758e0d344a8ab64906a615aa8951b992ec3adb013c8f0209d3f74",
+    "experiments/deit-full-int8/main.cc": "97027134d779d32b9d7892acbf858a6ff32eba75b09a609fafd1dc7e9c943a2d",
+    "experiments/deit-full-int8/export_model.py": "9adfb563c3077424c832a21907a895e7c0b4af38f0140e8e33ae27359d7c2ddb",
+    "experiments/deit-full-int8/build.py": "6d084f1aec6791dd639eeb87ee93da65aa1f8757d0bf720a0c2b3c57fc5dd818",
+    "experiments/deit-full-int8/run.py": "7432276ad6bab0e18fd29f0121b9bfe1be0158ffee6c9b7c2ec583baefdfc972",
+    "experiments/deit-full-int8/profile.py": "e7862092d1aae20029aa371677e2bdb097de267c59007f326e1a78cddf163489",
+    "experiments/deit-full-int8/model.cc": "2bfab88491cbd2d58e18e8e9128b74cfdba452fe9aa894a8539e6342fd5f28ee"
+  }
+}

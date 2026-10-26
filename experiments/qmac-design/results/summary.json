@@ -1,0 +1,37 @@
+{
+  "cases_seed": 6455,
+  "designs": [
+    {
+      "lanes": 1,
+      "arithmetic_multipliers_before_mapping": 1,
+      "tested_vectors": 1042,
+      "verified_latency_cycles": 8,
+      "generic_combinational_cells": 851,
+      "generic_sequential_cells": 197,
+      "total_generic_cells": 1048
+    },
+    {
+      "lanes": 2,
+      "arithmetic_multipliers_before_mapping": 2,
+      "tested_vectors": 1042,
+      "verified_latency_cycles": 4,
+      "generic_combinational_cells": 1446,
+      "generic_sequential_cells": 197,
+      "total_generic_cells": 1643
+    },
+    {
+      "lanes": 8,
+      "arithmetic_multipliers_before_mapping": 8,
+      "tested_vectors": 1042,
+      "verified_latency_cycles": 1,
+      "generic_combinational_cells": 4742,
+      "generic_sequential_cells": 197,
+      "total_generic_cells": 4939
+    }
+  ],
+  "limitations": [
+    "Standalone units, not integrated into Spike/CV-Wally",
+    "Generic cell counts, not SAED area",
+    "Clock period and CPU speedup not measured"
+  ]
+}

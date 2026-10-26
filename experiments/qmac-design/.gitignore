@@ -1,0 +1,7 @@
+# Recreated by run.sh; retain compact summaries/version/provenance evidence.
+/results/*.log
+/results/*.vvp
+/results/lanes[128].json
+/vectors.json
+/vectors.mem
+/vector_count.vh

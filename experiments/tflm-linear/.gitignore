@@ -1,0 +1,5 @@
+/vendor/
+/build/
+/__pycache__/
+/library-sources.txt
+/third-party-sources.txt

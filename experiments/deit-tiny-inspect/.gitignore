@@ -1,0 +1,5 @@
+.venv/
+.pip-cache/
+weights/
+results/*.pt
+__pycache__/

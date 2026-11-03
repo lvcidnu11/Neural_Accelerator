@@ -1,0 +1,14 @@
+{
+  "run.py": "afa8acb5dcaf54c3af29008bcffc7067d3345d985ddf1afc223e950be3612448",
+  "kernel_checks.py": "c9fa6700197371d7a88cb5368ebd47d6d4b0ff2f27a2a102deda445c4956f7b0",
+  "export_results.py": "18b7b1d9aee7f26f5e6332f28b4bcd185c2515a7f53434f8baa69942d161cbf8",
+  "REPORT.md": "38e30ca0d844eeddff248ccf4121dfa9bfea561a5d42c48ea7b1df96a2ae2adb",
+  "build/scalar-b4-inline/result.json": "1312ec6286a3f600dbf561ea8bf9f223290009d2cf92b887b7bb984aa4d83fea",
+  "build/scalar-b4-inline/correctness.log": "c1bac15b93f897c3d42f27a108aa7ac9709e95ee9157bd8c257701bef1b1f93a",
+  "build/scalar-b4-inline/stock-spike.log": "2f5ef0a602b99e3e0697499aa7e2bdb0053dc2ae8c58c93f62e93a82cd67ba1e",
+  "build/scalar-b4-inline/before.log": "433c191d83c3864ff078e12deb28771a1048969667cde136a6984ae1297aaa4c",
+  "build/scalar-b4-inline/after.log": "5e3f1b4146f193f880a96baf32a09f41efb2ee1ee07496e936df5bbf0692e597",
+  "build/scalar-b4-inline/disassembly.log": "02836d5dc84bbbebcb504a031d258a43ee0129014c65e5cafc7aa2a0e6155964",
+  "build/scalar-b4-inline/riscv/program.elf": "4d9ade6b9a36c12d39d99cce4622c5a94e904f6d2f613435c297a91a34535c57",
+  "build/scalar-b4-inline/src/experiments/tflm-linear/linear_kernel.h": "1495735c1208be171f8f30cddbc766de04133ff3bdfbcf1a1f62b85fbe296711"
+}

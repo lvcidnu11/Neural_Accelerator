@@ -1,0 +1,31 @@
+{
+  "wally_revision": "2f82f001139358be7646e910ff6fa2a140bed620",
+  "scope": "Unmodified CV-Wally controller component only, with minimal RV64IMC+CSR parameters. Not full CPU or accelerator integration.",
+  "verilator": "Verilator 5.050 2026-07-01 rev vUNKNOWN-built20260701",
+  "tests": 6,
+  "custom_instructions_rejected": [
+    "qmac8",
+    "requant8",
+    "xtpu"
+  ],
+  "standard_controls_accepted": [
+    "ADDI",
+    "MUL",
+    "LD"
+  ],
+  "sources_sha256": {
+    "src/ieu/controller.sv": "b4bc1fbfcd270ef0365ba96c5f2c7f5c82b7a50e8188d31f36c78a83b414ba2f",
+    "src/cvw.sv": "833016a2f680640fd024fc8fd03a6d56d770dfb0bdd83ec9077108c4a4aec5d2",
+    "src/lsu/lsu.sv": "6a8581f7abb55f0f538a13bf5eb72cffed2ea5bcc30882882d1850f62d3135cd",
+    "src/ebu/ebu.sv": "f0b8a5cc9b3377e109c4c9f7fc4460312e8b74e14bde4aa10c33ad758b4358e4",
+    "config/rv64gc/config.vh": "2653cec0c34a838f22014ad9c593349ff34931b252c3c44b3b5ff4c1241ed8bb",
+    "config/shared/BranchPredictorType.vh": "34ccbe14b8006fdc84e3c467f3db89c7a4cb7509c2c8891fd4e883f43f68b4fd",
+    "src/generic/flop/flopenrc.sv": "dae322d339f571169d89542b8260bce6198e76a907f8ee54b28b2c04620f7d93",
+    "src/generic/mux.sv": "c2e5cbff7a09a6c8839f8fa621a3def4f58991b787b1059325e98dc64a36b948"
+  },
+  "limitations": [
+    "No custom arithmetic or memory engine was added",
+    "No instruction retirement/trap handler/full ELF simulated",
+    "No performance/area/timing claim"
+  ]
+}

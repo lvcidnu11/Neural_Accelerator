@@ -1,0 +1,18 @@
+{
+  "kernel_cases": 900,
+  "extrema_cases": 1,
+  "logged_boundary_cases": 4,
+  "negative_controls": 9,
+  "host_ubsan": "PASS",
+  "spike_fast": "PASS",
+  "spike_logged": "PASS",
+  "illegal_traps": "PASS",
+  "seed": 6455,
+  "full_model": {
+    "nodes": 14,
+    "blocks": 12,
+    "exact_final_logits": 1000,
+    "host_ubsan": "PASS",
+    "spike": "PASS"
+  }
+}

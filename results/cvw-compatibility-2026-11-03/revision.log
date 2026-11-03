@@ -1,0 +1,2 @@
+COMMAND ["git", "-C", "/Users/ddar/Documents/nthu-ee6455/cvw", "rev-parse", "HEAD"]
+2f82f001139358be7646e910ff6fa2a140bed620

@@ -1,0 +1,74 @@
+[
+  {
+    "variant": "qmac-control",
+    "configuration": "16:4:64",
+    "roi_accesses": 862447442,
+    "roi_misses": 385,
+    "miss_rate": 4.464040140315008e-07,
+    "method": "Deterministic capped runs from reset, after-minus-before inference; same warmup prefix",
+    "warning": "Functional random-replacement model, no timing. Cache traces use instruction start addresses. Installed Spike Bytes Read counter is malformed and excluded."
+  },
+  {
+    "variant": "qmac-control",
+    "configuration": "64:4:64",
+    "roi_accesses": 862447442,
+    "roi_misses": 77,
+    "miss_rate": 8.928080280630017e-08,
+    "method": "Deterministic capped runs from reset, after-minus-before inference; same warmup prefix",
+    "warning": "Functional random-replacement model, no timing. Cache traces use instruction start addresses. Installed Spike Bytes Read counter is malformed and excluded."
+  },
+  {
+    "variant": "qmac-inline",
+    "configuration": "16:4:64",
+    "roi_accesses": 830264926,
+    "roi_misses": 292,
+    "miss_rate": 3.5169497211785143e-07,
+    "method": "Deterministic capped runs from reset, after-minus-before inference; same warmup prefix",
+    "warning": "Functional random-replacement model, no timing. Cache traces use instruction start addresses. Installed Spike Bytes Read counter is malformed and excluded."
+  },
+  {
+    "variant": "qmac-inline",
+    "configuration": "64:4:64",
+    "roi_accesses": 830264926,
+    "roi_misses": 77,
+    "miss_rate": 9.274148237354302e-08,
+    "method": "Deterministic capped runs from reset, after-minus-before inference; same warmup prefix",
+    "warning": "Functional random-replacement model, no timing. Cache traces use instruction start addresses. Installed Spike Bytes Read counter is malformed and excluded."
+  },
+  {
+    "variant": "tpu-hoist",
+    "configuration": "16:4:64",
+    "roi_accesses": 220234394,
+    "roi_misses": 181,
+    "miss_rate": 8.218516495656895e-07,
+    "method": "Deterministic capped runs from reset, after-minus-before inference; same warmup prefix",
+    "warning": "Functional random-replacement model, no timing. Cache traces use instruction start addresses. Installed Spike Bytes Read counter is malformed and excluded."
+  },
+  {
+    "variant": "tpu-hoist",
+    "configuration": "64:4:64",
+    "roi_accesses": 220234394,
+    "roi_misses": 64,
+    "miss_rate": 2.9059947829947033e-07,
+    "method": "Deterministic capped runs from reset, after-minus-before inference; same warmup prefix",
+    "warning": "Functional random-replacement model, no timing. Cache traces use instruction start addresses. Installed Spike Bytes Read counter is malformed and excluded."
+  },
+  {
+    "variant": "tpu-inline-hoist",
+    "configuration": "16:4:64",
+    "roi_accesses": 214329448,
+    "roi_misses": 322,
+    "miss_rate": 1.5023600490026923e-06,
+    "method": "Deterministic capped runs from reset, after-minus-before inference; same warmup prefix",
+    "warning": "Functional random-replacement model, no timing. Cache traces use instruction start addresses. Installed Spike Bytes Read counter is malformed and excluded."
+  },
+  {
+    "variant": "tpu-inline-hoist",
+    "configuration": "64:4:64",
+    "roi_accesses": 214329448,
+    "roi_misses": 79,
+    "miss_rate": 3.6859144059382825e-07,
+    "method": "Deterministic capped runs from reset, after-minus-before inference; same warmup prefix",
+    "warning": "Functional random-replacement model, no timing. Cache traces use instruction start addresses. Installed Spike Bytes Read counter is malformed and excluded."
+  }
+]

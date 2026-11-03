@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Profile complete 14-node inference, including stage hash checks."""
+import argparse
 from collections import Counter
 import hashlib
 import json
@@ -10,8 +11,19 @@ ROOT=Path(__file__).resolve().parent
 B=ROOT/'build';OUT=B/'riscv';ELF=OUT/'program.elf'
 
 def main():
+    global OUT,ELF
+    parser=argparse.ArgumentParser();parser.add_argument('--tpu',action='store_true')
+    parser.add_argument('--scalar-baseline',action='store_true')
+    parser.add_argument('--inline-linear',action='store_true');parser.add_argument('--hoist-tpu',action='store_true');a=parser.parse_args()
+    if a.scalar_baseline and a.tpu: parser.error('--scalar-baseline and --tpu are mutually exclusive')
+    if a.hoist_tpu and not a.tpu: parser.error('--hoist-tpu requires --tpu')
+    suffix=('-inline' if a.inline_linear else '')+('-hoist' if a.hoist_tpu else '')
+    OUT=B/('riscv'+('-scalar' if a.scalar_baseline else ('-tpu' if a.tpu else ''))+suffix);ELF=OUT/'program.elf'
+
     symbols={p[2]:int(p[0],16) for line in subprocess.check_output(['riscv64-elf-nm',str(ELF)],text=True).splitlines() if len(p:=line.split())==3}
-    base=['spike','--isa=RV64IMC','-m32','--extlib='+str(ROOT.parent/'tflm-linear/build/libqmac8.dylib'),'--extension=xqmac8']
+    base=['spike','--isa=RV64IMC','-m32']
+    if not a.scalar_baseline: base+=['--extlib='+str(ROOT.parent/'tflm-linear/build/libqmac8.dylib'),'--extension=xqmac8']
+    if a.tpu: base+=['--extlib='+str(ROOT.parent/'tpu-spike/build/libtpu.dylib'),'--extension=xtpu']
     fields=['nodes_checked','blocks_checked','outputs_checked','arena_used','top1','failure_stage','failed_node','expected_stage_hash','actual_stage_hash']
     cmd=f'until pc 0 {symbols["inference_begin"]:x}\nreg 0 minstret\nuntil pc 0 {symbols["inference_end"]:x}\nreg 0 minstret\nuntil pc 0 {symbols["test_finished"]:x}\nreg 0 a0\n'
     cmd+=''.join(f'mem 0 {symbols[field]:x}\n' for field in fields)+'rs\n'
@@ -53,6 +65,7 @@ def main():
         word,m=instructions[pc]
         if word&0xfe00707f==0x4000000b: category=m='qmac8'
         elif word&0xfe00707f==0x4200000b:category=m='requant8'
+        elif word&0xfff07fff==0x4400000b:category=m='tpu_tile'
         elif m in loads:category='load'
         elif m in stores:category='store'
         elif m in branches:category='conditional_branch'
@@ -64,13 +77,19 @@ def main():
         mix[category]+=n;mnemonics[m]+=n
     # 1,253,683,200 mathematical MACs, plus AV padding 197->200;
     # each QK output-channel tail (197 % 4) uses the scalar fallback.
-    assert mix['qmac8']==156823872,dict(mix)
-    assert mix['requant8']==5974636,dict(mix)
+    assert mix['qmac8']==(0 if a.tpu or a.scalar_baseline else 156823872),dict(mix)
+    assert mix['requant8']==(0 if a.scalar_baseline else 5974636),dict(mix)
     size=subprocess.check_output(['riscv64-elf-size','-A',str(ELF)],text=True);(OUT/'size.txt').write_text(size)
     report=dict(scope='Complete DeiT-Tiny inference, one synthetic input; includes per-node stage-hash checks',
-        isa='RV64IMC + project qmac8/requant8',retired_instructions=retired,mix=dict(mix),mnemonics=dict(mnemonics.most_common()),
+        isa='RV64IMC scalar' if a.scalar_baseline else 'RV64IMC + project qmac8/requant8',retired_instructions=retired,mix=dict(mix),mnemonics=dict(mnemonics.most_common()),
         correctness=state,model_sha256=ref['model_sha256'],elf_sha256=hashlib.sha256(ELF.read_bytes()).hexdigest(),
         mathematical_macs=1253683200,padded_macs=1255044864,
-        limitations=ref['limitations']+['No full-model baseline speedup or hardware cycles measured','Measured ROI includes all 14 output stage-hash checks'])
-    (B/'profile.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
+        limitations=ref['limitations']+['No hardware cycles or hardware speedup measured','Measured ROI includes all 14 output stage-hash checks'])
+    if a.tpu:
+        stats=json.loads(re.search(r'TPU_STATS (\{[^\n]+\})',text)[1])
+        assert stats['commands']==mix['tpu_tile'] and stats['macs']==1255044864,stats
+        report['accelerator']=stats
+        report['isa']='RV64IMC + qmac8/requant8 + xtpu'
+        report['limitations'].append('Accelerator cycles are analytical assumptions, not RTL measurements; core memory counts exclude tile-engine traffic')
+    (B/('profile'+('-scalar' if a.scalar_baseline else ('-tpu' if a.tpu else ''))+suffix+'.json')).write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
 if __name__=='__main__':main()

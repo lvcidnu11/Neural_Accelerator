@@ -1,0 +1,48 @@
+{
+  "scope": "Complete inference, same input/model; includes 14 stage hashes",
+  "input_sha256": "3325824ca88991b5714d63f46474418805015cd2bce9cea8ec6e3bef83820ecc",
+  "model_sha256": "958de3ce3f1b421a6de6c25d2c132f46ae09d1728b000586a7e0848118a6ed01",
+  "results": [
+    {
+      "stage": "B0",
+      "definition": "Scalar B=1, software requant, separate GELU LUT; no Linear inline",
+      "retired": 9115503491,
+      "source": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/b0-full-inference-2026-11-03/build/scalar-b0/result.json",
+      "source_sha256": "4251f7d48baa0852b249a9d42f114ac3e778e184b262a046f59d5e9f775b5b7a"
+    },
+    {
+      "stage": "B1",
+      "definition": "Scalar B=4, fused GELU LUT, Linear inline",
+      "retired": 6095818622,
+      "source": "/Users/ddar/Documents/nthu-ee6455/project/results/full-inference-2026-11-03/scalar.json",
+      "source_sha256": "1312ec6286a3f600dbf561ea8bf9f223290009d2cf92b887b7bb984aa4d83fea"
+    },
+    {
+      "stage": "X1",
+      "definition": "B1 + qmac8; software requant",
+      "retired": 890189414,
+      "source": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/x1-qmac-inference-2026-11-03/build/x1-qmac/result.json",
+      "source_sha256": "52562bb108f09490141873913567e57e94fe7c95ae5caad2c595b832f81f9a73"
+    },
+    {
+      "stage": "X2",
+      "definition": "X1 + requant8",
+      "retired": 830264926,
+      "source": "/Users/ddar/Documents/nthu-ee6455/project/results/full-inference-2026-11-03/cpu-design.json",
+      "source_sha256": "68cd07fefca2dbdf251c6d1c85261b65ba6e9055186ff7cb813998a5bb950ff3"
+    },
+    {
+      "stage": "TPU",
+      "definition": "Tile dot command + requant8; CPU parameter reuse + inline",
+      "retired": 214329448,
+      "source": "/Users/ddar/Documents/nthu-ee6455/project/results/full-inference-2026-11-03/tpu.json",
+      "source_sha256": "ce0de13ef47f000b648e6970819da3c7f3af5a56b839dc13075aa98a709881cd"
+    }
+  ],
+  "limitations": [
+    "B0 GELU LUT is shared for equal functionality; separate function inside same custom node, not a separate TFLM node",
+    "One synthetic input, no dataset accuracy",
+    "Spike CPU retired instructions are not hardware cycles or speedup",
+    "TPU engine has no integrated CV-Wally RTL"
+  ]
+}

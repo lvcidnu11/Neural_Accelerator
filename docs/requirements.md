@@ -1,37 +1,31 @@
-# Assignment mapping and outstanding work
+# Requirements and project status
 
-The authoritative assignment is `rv64imc_quantized_nn_term_project.md`.
-Status below separates working software from final course completion.
+For the seven-item ISA checkpoint supplied on 2026-11-03, use the explicit
+mapping and run instructions in [checkpoint.md](checkpoint.md). The checkpoint
+requires source, quantization/conversion, Spike ISA implementation, short
+instruction tests, reproducible full-workload evaluation, a 5–6 minute deck,
+and a GitHub README with expected counts. The provided checkpoint instructions
+explicitly do **not** require CV-Wally or PPA evaluation.
 
-| Requirement | Evidence/location | Status |
+| Checkpoint item | Current evidence | Status |
 |---|---|---|
-| Bare-metal C/C++, RV64IMC, static memory | `tflm-linear/start.S`, `link.ld`, `deit-full-int8/*.cc` | Implemented; Spike verified |
-| Quantized model/conversion scripts | `deit-full-int8/export_model.py`, `deit-linear-int8/prepare.py` | Implemented; synthetic scales only |
-| Spike custom packed MAC and requantization | `qmac8-requant-spike/extension.cc`, `ISA.md` | Implemented and verified |
-| Short instruction verification tests | generators, `instruction_tests.c`, `requant_tests.c` | Directed/random, overlap/x0/wrap, traps |
-| Reproducible benchmark scripts | `scripts/project.py`, experiment build/run/profile scripts | Implemented; macOS arm64 supported |
-| B0 / X1 / X2 incremental comparison | full FC1 and FC1→GELU, `results/` | Measured |
-| Software-optimized scalar B1 | complete representative scalar optimization study | Still needed; custom blocking B=1 is not assignment B1 |
-| Three largest bottlenecks | instruction mixes available; operator attribution across full model | Analysis/structured report still needed |
-| Two major operators and full workload coverage | FC1 ablations, complete model correctness/profile | Need structured comparative second-operator results |
-| Instruction mix, memory instructions, MAC/instruction, utilization, code size | saved profile JSON, sizes, disassembly | Software metrics available; operator contribution incomplete |
-| Instruction-reduction threshold on major FC | FC1 scalar 239,507,000 vs custom 26,491,730 | Exceeds 2x instruction-count ratio; no cycle claim |
-| Lane design exploration | existing `experiments/qmac-design` standalone RTL | Partial; no CPU integration |
-| CPU cycle/CPI, representative kernel, Fmax/critical path/area, efficiency | CVW integration and SAED flow | Not completed |
-| Dataset calibration/accuracy | representative images and validation evaluation | Not completed; float/quantized top-1 differ on current fixture |
-| Full-model baseline and end-to-end speedup | fair scalar versus custom full-model runs | Not completed |
-| GitHub run instructions and expected metrics | root README, DESIGN, EXPERIMENTS, results | Prepared for review |
-| 5–6 minute slides; final report | presentation and report artifacts | Not completed |
-| Assistance disclosure / course policy | AI_USAGE.md | Draft disclosure; student must check course rules |
+| Bare-metal C/C++ workload | `experiments/deit-full-int8/`, `experiments/tflm-linear/` | Complete 12-block integer inference, Spike verified |
+| Quantized model or Python conversion | `experiments/deit-full-int8/export_model.py` | Implemented; synthetic fixture and project scales |
+| Spike/custom ISA source | `experiments/qmac8-requant-spike/`, `experiments/tpu-spike/` | qmac8/requant8 verified; TPU functional exploration |
+| Short instruction tests | `experiments/qmac8-requant-spike/run.py` | Directed/randomized and invalid-encoding controls |
+| Full-workload evaluation | `scripts/project.py checkpoint`, `results/incremental-inference-2026-11-03/` | B0/B1/X1/X2/TPU measured; one synthetic input |
+| 5–6 minute presentation | Student-number presentation in the local project folder; not tracked | English slides and speaker notes |
+| README and expected measurements | `README.md`, `docs/checkpoint.md`, `docs/reproduction.md` | Commands, provenance and saved counts documented |
 
-Suggested next milestones:
+The full rerun is validated on macOS arm64 with the listed dependencies; a clean
+machine clone or a complete rerun of the new single-command entry point has
+not been independently verified. Current results match 14
+stage hashes and 1,000 integer logits for one input. They do not establish
+calibrated dataset accuracy. Spike retired counts are ISA measurements, not
+hardware speedup.
 
-1. Submission checkpoint: verify the relocated source, review Git diff, push
-   the code/docs/evidence and present the implemented scope honestly.
-2. Complete the software study: fair scalar B1, second operator ablation,
-   full-model operator attribution and, when a dataset is available, calibration
-   and accuracy. Completion means reproducible comparisons and explicit errors.
-3. Complete the hardware study: integrate chosen ISA datapaths into CVW,
-   validate representative kernels, measure cycles and synthesize using the
-   specified technology. Completion means correctness plus timing/area evidence.
-4. Write final report/slides tied to those measurements and explain the design.
+The broader course project may later include CV-Wally integration, physical
+implementation and a final report. Those remain separate from this checkpoint;
+consult the instructor's current final-stage requirements rather than treating
+these items as checkpoint prerequisites. AI assistance is recorded in
+[AI_USAGE.md](../AI_USAGE.md).

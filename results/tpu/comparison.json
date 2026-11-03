@@ -1,0 +1,13 @@
+{
+  "scope": "Same complete DeiT-Tiny synthetic-input inference and 14 hash checks; GCC 15.2.0 -O2; functional Spike",
+  "retired_reduction": 0.6959409707426554,
+  "instruction_count_ratio": 3.2888350740396404,
+  "modeled_engine_cycles": 42928145,
+  "limitations": [
+    "Instruction count ratio is not hardware speedup",
+    "Engine cycles assume 64 INT8 MAC PEs, k+m+n-2 schedule, serial DMA at 16 bytes/cycle, no overlap/cache/bank/conflict/setup cost",
+    "CPU remaining cycles and stalls are not modeled; no end-to-end cycle estimate",
+    "No RTL/area/Fmax/power measurement",
+    "Synthetic quantization; no accuracy improvement established"
+  ]
+}

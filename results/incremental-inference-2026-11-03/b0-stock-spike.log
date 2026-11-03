@@ -1,0 +1,11 @@
+COMMAND ["spike", "--isa=RV64IMC", "-m32", "-d", "--instructions=80000000000", "--debug-cmd=/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/b0-full-inference-2026-11-03/build/scalar-b0/correctness.cmd", "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/b0-full-inference-2026-11-03/build/scalar-b0/riscv/program.elf"]
+0x000000000049fdb7
+0x000000021f9d893a
+0x0000000000000000
+0x000000000000000e
+0x000000000000000c
+0x00000000000003e8
+0x000003e80002e7d0
+0x0000000000000026
+0x0000002600000000
+0x0000000c00000000

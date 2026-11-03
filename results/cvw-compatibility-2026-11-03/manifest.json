@@ -1,0 +1,12 @@
+{
+  "experiments/cvw-compatibility-2026-11-03/REPORT.md": "38be6bafad665fbb5eb003115cf282ec8b7891ed055efa9bf75da67ee6566092",
+  "experiments/cvw-compatibility-2026-11-03/probe.py": "a8ffaca73ddeadacb915754eba852ac6bd19f57c0564e592b8a13e19aedd4362",
+  "results/cvw-compatibility-2026-11-03/evidence.json": "db5edc7772aa31cd974d8fca0e229a84050db59ebc54feb5b69ab9821e24f409",
+  "results/cvw-compatibility-2026-11-03/verilator-version.log": "163db4cb090d8e6921e3e78891b64d70449d76f859cf5362aedcac95ed401d74",
+  "results/cvw-compatibility-2026-11-03/compile.log": "ec1606944345e629c548f979dd998bb7ff1bff0da18b2d59c8b2df452dcf6c8f",
+  "results/cvw-compatibility-2026-11-03/result.log": "3953cb28bd6005e7aa011f79d8d76d330eff5a296d691d60c6991c2badd5bcd7",
+  "results/cvw-compatibility-2026-11-03/controller_probe.sv": "46976f8fa3a20b319a3ff396e138d965833e793442aef4e28de6f40b69c32d06",
+  "results/cvw-compatibility-2026-11-03/revision.log": "321755afc8677b08accf4ab4d815ceff29413f9c1deae2a6c40448fedc4c2e94",
+  "docs/cvw-compatibility-audit.md": "38be6bafad665fbb5eb003115cf282ec8b7891ed055efa9bf75da67ee6566092",
+  "presentations/RV64IMC_Full_Inference_5min_2026-11-03_CVW_status_v2.pptx": "9b2edcb2004269e61d3d692e28018556515ef1cc601adeeef692785844d781f2"
+}

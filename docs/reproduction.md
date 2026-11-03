@@ -2,7 +2,8 @@
 
 ## Supported setup
 
-Run commands from the repository root unless stated otherwise. The supported
+Clone the `tpu` branch and run commands from the repository root unless stated
+otherwise. The supported
 host is macOS arm64 with Python 3.13, Apple Clang, Git, curl, PATH
 `riscv64-elf-gcc`/binutils and Spike with matching development headers. Exact
 validated versions and model hashes are in README and EXPERIMENTS. Setup does
@@ -118,3 +119,19 @@ sh experiments/qmac-design/run.sh
 This regenerates vectors, simulations, lint, generic netlists and compact
 summary under that experiment. It is separate from Spike tests and has not
 established CPU timing or SAED physical area.
+
+## ISA checkpoint: incremental complete inference
+
+After setup, `python3 scripts/project.py checkpoint` runs the instruction
+verification and full-model setup, builds the optional TPU plugin, measures B0,
+B1, X1, X2 and TPU, and collects fresh outputs. The B0 stock-Spike run is long;
+allow many minutes. It writes a summary under
+`experiments/b0-full-inference-2026-11-03/build/REPORT.md`.
+
+To inspect the committed results only, run
+`python3 experiments/b0-full-inference-2026-11-03/collect.py --saved`. Fresh
+collection uses generated result files, never silently substitutes saved values.
+The overlay experiments use the checked-in frozen kernel from commit `a2bee01`.
+The validated environment and clean-clone limitation above
+apply. B0 retains a separate GELU LUT and is not an upstream TFLM builtin graph.
+See [checkpoint.md](checkpoint.md) for the five definitions and expected counts.

@@ -1,0 +1,1083 @@
+{
+  "scope": "Full startup and model fixture for stack writes, Invoke ROI for instructions and cache counts",
+  "memory": {
+    "qmac-control": {
+      "variant": "qmac-control",
+      "retired": 862447442,
+      "sections": {
+        ".text": 76672,
+        ".rodata": 6288208,
+        ".data": 2920,
+        ".tohost": 72,
+        ".bss": 1034996,
+        ".comment": 50,
+        ".riscv.attributes": 54
+      },
+      "reserved_stack_bytes": 65536,
+      "observed_stack_touched_bytes": 1112,
+      "arena_used": 190416,
+      "static_writable_bytes": 1037988,
+      "loadable_payload_bytes": 6367872,
+      "diagnostics_objects": {
+        "main.cc": {
+          "byte_identical": true,
+          "sha256": "458c2051ea9c478e55d5f0e7fd0ca5fc255ec095695f6249cdbcc65b008f6ba0"
+        },
+        "model.cc": {
+          "byte_identical": true,
+          "sha256": "d36c07c1a3d532efab655ca8ffa58001980d648926f4b0ace85b2d6448ad2de7"
+        },
+        "platform.cc": {
+          "byte_identical": true,
+          "sha256": "22072a88f4721edd15b51e60320bda961c6a7f0cac0b517199aeca0ef5f7d7ce"
+        }
+      },
+      "compiler_stack_frames": [
+        {
+          "function": "/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/vendor/tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h:49:7:virtual tflite::micro::MicroMutableOpResolver<3>::~MicroMutableOpResolver()",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/vendor/tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h:78:36:tflite::micro::TfLiteStatus (* tflite::micro::MicroMutableOpResolver<tOpCount>::GetOpDataParser(tflite::BuiltinOperator) const)(const tflite::Operator*, tflite::micro::BuiltinDataAllocator*, void**) [with unsigned int tOpCount = 3]",
+          "bytes": 16,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/vendor/tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h:67:27:const tflite::micro::TFLMRegistration* tflite::micro::MicroMutableOpResolver<tOpCount>::FindOp(const char*) const [with unsigned int tOpCount = 3]",
+          "bytes": 64,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/vendor/tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h:55:27:const tflite::micro::TFLMRegistration* tflite::micro::MicroMutableOpResolver<tOpCount>::FindOp(tflite::BuiltinOperator) const [with unsigned int tOpCount = 3]",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-control/src/experiments/deit-full-int8/main.cc:19:5:int main()",
+          "bytes": 608,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-control/src/experiments/deit-full-int8/model.cc:128:21:tflite::micro::TfLiteStatus Prepare(tflite::micro::TfLiteContext*, tflite::micro::TfLiteNode*)",
+          "bytes": 64,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-control/src/experiments/deit-full-int8/model.cc:39:6:void {anonymous}::norm(const int8_t*, int8_t*, Params, int, int)",
+          "bytes": 80,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-control/src/experiments/deit-full-int8/model.cc:56:6:void {anonymous}::residual(const int8_t*, const int8_t*, int8_t*, Params, int)",
+          "bytes": 64,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-control/src/experiments/deit-full-int8/model.cc:166:26:tflite::micro::TFLMRegistration RegisterDeitInteger()",
+          "bytes": 32,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-control/src/experiments/deit-full-int8/../tflm-linear/linear_kernel.h:53:48:void project::linear(const int8_t*, const int8_t*, const int32_t*, const int32_t*, const int32_t*, int8_t*, int, int, int, const int8_t*) [with int B = 4]",
+          "bytes": 208,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-control/src/experiments/deit-full-int8/model.cc:147:21:tflite::micro::TfLiteStatus Eval(tflite::micro::TfLiteContext*, tflite::micro::TfLiteNode*)",
+          "bytes": 208,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-control/src/experiments/tflm-linear/platform.cc:8:17:void DebugLog(const char*, va_list)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-control/src/experiments/tflm-linear/platform.cc:16:16:int DebugVsnprintf(char*, size_t, const char*, va_list)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-control/src/experiments/tflm-linear/platform.cc:21:18:void* _sbrk(ptrdiff_t)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-control/src/experiments/tflm-linear/platform.cc:22:16:int _write(int, const void*, unsigned int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-control/src/experiments/tflm-linear/platform.cc:23:16:int _read(int, void*, unsigned int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-control/src/experiments/tflm-linear/platform.cc:24:16:int _close(int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-control/src/experiments/tflm-linear/platform.cc:25:16:int _fstat(int, void*)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-control/src/experiments/tflm-linear/platform.cc:26:16:int _isatty(int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-control/src/experiments/tflm-linear/platform.cc:27:16:int _lseek(int, int, int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-control/src/experiments/tflm-linear/platform.cc:28:16:int _getpid()",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-control/src/experiments/tflm-linear/platform.cc:29:16:int _kill(int, int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-control/src/experiments/tflm-linear/platform.cc:30:17:void _exit(int)",
+          "bytes": 0,
+          "kind": "static"
+        }
+      ],
+      "relevant_frames": [
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-control/src/experiments/deit-full-int8/main.cc:19:5:int main()",
+          "bytes": 608,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-control/src/experiments/deit-full-int8/../tflm-linear/linear_kernel.h:53:48:void project::linear(const int8_t*, const int8_t*, const int32_t*, const int32_t*, const int32_t*, int8_t*, int, int, int, const int8_t*) [with int B = 4]",
+          "bytes": 208,
+          "kind": "static"
+        }
+      ],
+      "note": "Sentinel reports deepest written stack word in this complete startup/main execution, 8-byte resolution. Unwritten reserved frames may escape detection. It is not a worst-case call-stack bound."
+    },
+    "qmac-inline": {
+      "variant": "qmac-inline",
+      "retired": 830264926,
+      "sections": {
+        ".text": 76824,
+        ".rodata": 6288208,
+        ".data": 2920,
+        ".tohost": 72,
+        ".bss": 1034996,
+        ".comment": 50,
+        ".riscv.attributes": 54
+      },
+      "reserved_stack_bytes": 65536,
+      "observed_stack_touched_bytes": 1112,
+      "arena_used": 190416,
+      "static_writable_bytes": 1037988,
+      "loadable_payload_bytes": 6368024,
+      "diagnostics_objects": {
+        "main.cc": {
+          "byte_identical": true,
+          "sha256": "458c2051ea9c478e55d5f0e7fd0ca5fc255ec095695f6249cdbcc65b008f6ba0"
+        },
+        "model.cc": {
+          "byte_identical": true,
+          "sha256": "26544d4f00db79eaf850469350faed4fc8276927e197de4ef32df345360ef559"
+        },
+        "platform.cc": {
+          "byte_identical": true,
+          "sha256": "22072a88f4721edd15b51e60320bda961c6a7f0cac0b517199aeca0ef5f7d7ce"
+        }
+      },
+      "compiler_stack_frames": [
+        {
+          "function": "/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/vendor/tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h:49:7:virtual tflite::micro::MicroMutableOpResolver<3>::~MicroMutableOpResolver()",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/vendor/tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h:78:36:tflite::micro::TfLiteStatus (* tflite::micro::MicroMutableOpResolver<tOpCount>::GetOpDataParser(tflite::BuiltinOperator) const)(const tflite::Operator*, tflite::micro::BuiltinDataAllocator*, void**) [with unsigned int tOpCount = 3]",
+          "bytes": 16,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/vendor/tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h:67:27:const tflite::micro::TFLMRegistration* tflite::micro::MicroMutableOpResolver<tOpCount>::FindOp(const char*) const [with unsigned int tOpCount = 3]",
+          "bytes": 64,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/vendor/tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h:55:27:const tflite::micro::TFLMRegistration* tflite::micro::MicroMutableOpResolver<tOpCount>::FindOp(tflite::BuiltinOperator) const [with unsigned int tOpCount = 3]",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-inline/src/experiments/deit-full-int8/main.cc:19:5:int main()",
+          "bytes": 608,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-inline/src/experiments/deit-full-int8/model.cc:52:6:void {anonymous}::dense(const int8_t*, int8_t*, Params, int, int, int, int, const int8_t*)",
+          "bytes": 176,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-inline/src/experiments/deit-full-int8/model.cc:128:21:tflite::micro::TfLiteStatus Prepare(tflite::micro::TfLiteContext*, tflite::micro::TfLiteNode*)",
+          "bytes": 64,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-inline/src/experiments/deit-full-int8/model.cc:39:6:void {anonymous}::norm(const int8_t*, int8_t*, Params, int, int)",
+          "bytes": 80,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-inline/src/experiments/deit-full-int8/model.cc:56:6:void {anonymous}::residual(const int8_t*, const int8_t*, int8_t*, Params, int)",
+          "bytes": 64,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-inline/src/experiments/deit-full-int8/model.cc:147:21:tflite::micro::TfLiteStatus Eval(tflite::micro::TfLiteContext*, tflite::micro::TfLiteNode*)",
+          "bytes": 208,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-inline/src/experiments/deit-full-int8/model.cc:166:26:tflite::micro::TFLMRegistration RegisterDeitInteger()",
+          "bytes": 32,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-inline/src/experiments/tflm-linear/platform.cc:8:17:void DebugLog(const char*, va_list)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-inline/src/experiments/tflm-linear/platform.cc:16:16:int DebugVsnprintf(char*, size_t, const char*, va_list)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-inline/src/experiments/tflm-linear/platform.cc:21:18:void* _sbrk(ptrdiff_t)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-inline/src/experiments/tflm-linear/platform.cc:22:16:int _write(int, const void*, unsigned int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-inline/src/experiments/tflm-linear/platform.cc:23:16:int _read(int, void*, unsigned int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-inline/src/experiments/tflm-linear/platform.cc:24:16:int _close(int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-inline/src/experiments/tflm-linear/platform.cc:25:16:int _fstat(int, void*)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-inline/src/experiments/tflm-linear/platform.cc:26:16:int _isatty(int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-inline/src/experiments/tflm-linear/platform.cc:27:16:int _lseek(int, int, int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-inline/src/experiments/tflm-linear/platform.cc:28:16:int _getpid()",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-inline/src/experiments/tflm-linear/platform.cc:29:16:int _kill(int, int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-inline/src/experiments/tflm-linear/platform.cc:30:17:void _exit(int)",
+          "bytes": 0,
+          "kind": "static"
+        }
+      ],
+      "relevant_frames": [
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/qmac-inline/src/experiments/deit-full-int8/main.cc:19:5:int main()",
+          "bytes": 608,
+          "kind": "static"
+        }
+      ],
+      "note": "Sentinel reports deepest written stack word in this complete startup/main execution, 8-byte resolution. Unwritten reserved frames may escape detection. It is not a worst-case call-stack bound."
+    },
+    "tpu-control": {
+      "variant": "tpu-control",
+      "retired": 262234932,
+      "sections": {
+        ".text": 76104,
+        ".rodata": 6288208,
+        ".data": 2920,
+        ".tohost": 72,
+        ".bss": 1034996,
+        ".comment": 50,
+        ".riscv.attributes": 54
+      },
+      "reserved_stack_bytes": 65536,
+      "observed_stack_touched_bytes": 1392,
+      "arena_used": 190416,
+      "static_writable_bytes": 1037988,
+      "loadable_payload_bytes": 6367304,
+      "diagnostics_objects": {
+        "main.cc": {
+          "byte_identical": true,
+          "sha256": "458c2051ea9c478e55d5f0e7fd0ca5fc255ec095695f6249cdbcc65b008f6ba0"
+        },
+        "model.cc": {
+          "byte_identical": true,
+          "sha256": "33d4fbf5192d14ccc634c3f1e652e0016086037a93d95c66d8460806cf48618e"
+        },
+        "platform.cc": {
+          "byte_identical": true,
+          "sha256": "22072a88f4721edd15b51e60320bda961c6a7f0cac0b517199aeca0ef5f7d7ce"
+        }
+      },
+      "compiler_stack_frames": [
+        {
+          "function": "/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/vendor/tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h:49:7:virtual tflite::micro::MicroMutableOpResolver<3>::~MicroMutableOpResolver()",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/vendor/tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h:78:36:tflite::micro::TfLiteStatus (* tflite::micro::MicroMutableOpResolver<tOpCount>::GetOpDataParser(tflite::BuiltinOperator) const)(const tflite::Operator*, tflite::micro::BuiltinDataAllocator*, void**) [with unsigned int tOpCount = 3]",
+          "bytes": 16,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/vendor/tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h:67:27:const tflite::micro::TFLMRegistration* tflite::micro::MicroMutableOpResolver<tOpCount>::FindOp(const char*) const [with unsigned int tOpCount = 3]",
+          "bytes": 64,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/vendor/tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h:55:27:const tflite::micro::TFLMRegistration* tflite::micro::MicroMutableOpResolver<tOpCount>::FindOp(tflite::BuiltinOperator) const [with unsigned int tOpCount = 3]",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-control/src/experiments/deit-full-int8/main.cc:19:5:int main()",
+          "bytes": 608,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-control/src/experiments/deit-full-int8/model.cc:128:21:tflite::micro::TfLiteStatus Prepare(tflite::micro::TfLiteContext*, tflite::micro::TfLiteNode*)",
+          "bytes": 64,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-control/src/experiments/deit-full-int8/model.cc:39:6:void {anonymous}::norm(const int8_t*, int8_t*, Params, int, int)",
+          "bytes": 80,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-control/src/experiments/deit-full-int8/model.cc:56:6:void {anonymous}::residual(const int8_t*, const int8_t*, int8_t*, Params, int)",
+          "bytes": 64,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-control/src/experiments/deit-full-int8/model.cc:166:26:tflite::micro::TFLMRegistration RegisterDeitInteger()",
+          "bytes": 32,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-control/src/experiments/deit-full-int8/../tflm-linear/linear_kernel.h:53:48:void project::linear(const int8_t*, const int8_t*, const int32_t*, const int32_t*, const int32_t*, int8_t*, int, int, int, const int8_t*) [with int B = 4]",
+          "bytes": 480,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-control/src/experiments/deit-full-int8/model.cc:147:21:tflite::micro::TfLiteStatus Eval(tflite::micro::TfLiteContext*, tflite::micro::TfLiteNode*)",
+          "bytes": 208,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-control/src/experiments/tflm-linear/platform.cc:8:17:void DebugLog(const char*, va_list)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-control/src/experiments/tflm-linear/platform.cc:16:16:int DebugVsnprintf(char*, size_t, const char*, va_list)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-control/src/experiments/tflm-linear/platform.cc:21:18:void* _sbrk(ptrdiff_t)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-control/src/experiments/tflm-linear/platform.cc:22:16:int _write(int, const void*, unsigned int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-control/src/experiments/tflm-linear/platform.cc:23:16:int _read(int, void*, unsigned int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-control/src/experiments/tflm-linear/platform.cc:24:16:int _close(int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-control/src/experiments/tflm-linear/platform.cc:25:16:int _fstat(int, void*)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-control/src/experiments/tflm-linear/platform.cc:26:16:int _isatty(int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-control/src/experiments/tflm-linear/platform.cc:27:16:int _lseek(int, int, int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-control/src/experiments/tflm-linear/platform.cc:28:16:int _getpid()",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-control/src/experiments/tflm-linear/platform.cc:29:16:int _kill(int, int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-control/src/experiments/tflm-linear/platform.cc:30:17:void _exit(int)",
+          "bytes": 0,
+          "kind": "static"
+        }
+      ],
+      "relevant_frames": [
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-control/src/experiments/deit-full-int8/main.cc:19:5:int main()",
+          "bytes": 608,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-control/src/experiments/deit-full-int8/../tflm-linear/linear_kernel.h:53:48:void project::linear(const int8_t*, const int8_t*, const int32_t*, const int32_t*, const int32_t*, int8_t*, int, int, int, const int8_t*) [with int B = 4]",
+          "bytes": 480,
+          "kind": "static"
+        }
+      ],
+      "note": "Sentinel reports deepest written stack word in this complete startup/main execution, 8-byte resolution. Unwritten reserved frames may escape detection. It is not a worst-case call-stack bound."
+    },
+    "tpu-inline": {
+      "variant": "tpu-inline",
+      "retired": 256453645,
+      "sections": {
+        ".text": 76520,
+        ".rodata": 6288208,
+        ".data": 2920,
+        ".tohost": 72,
+        ".bss": 1034996,
+        ".comment": 50,
+        ".riscv.attributes": 54
+      },
+      "reserved_stack_bytes": 65536,
+      "observed_stack_touched_bytes": 1640,
+      "arena_used": 190416,
+      "static_writable_bytes": 1037988,
+      "loadable_payload_bytes": 6367720,
+      "diagnostics_objects": {
+        "main.cc": {
+          "byte_identical": true,
+          "sha256": "458c2051ea9c478e55d5f0e7fd0ca5fc255ec095695f6249cdbcc65b008f6ba0"
+        },
+        "model.cc": {
+          "byte_identical": true,
+          "sha256": "8fc93a400acebfeef93f294ba8f7f6c94e45bcc7cd59e0b6911f105e16be4731"
+        },
+        "platform.cc": {
+          "byte_identical": true,
+          "sha256": "22072a88f4721edd15b51e60320bda961c6a7f0cac0b517199aeca0ef5f7d7ce"
+        }
+      },
+      "compiler_stack_frames": [
+        {
+          "function": "/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/vendor/tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h:49:7:virtual tflite::micro::MicroMutableOpResolver<3>::~MicroMutableOpResolver()",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/vendor/tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h:78:36:tflite::micro::TfLiteStatus (* tflite::micro::MicroMutableOpResolver<tOpCount>::GetOpDataParser(tflite::BuiltinOperator) const)(const tflite::Operator*, tflite::micro::BuiltinDataAllocator*, void**) [with unsigned int tOpCount = 3]",
+          "bytes": 16,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/vendor/tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h:67:27:const tflite::micro::TFLMRegistration* tflite::micro::MicroMutableOpResolver<tOpCount>::FindOp(const char*) const [with unsigned int tOpCount = 3]",
+          "bytes": 64,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/vendor/tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h:55:27:const tflite::micro::TFLMRegistration* tflite::micro::MicroMutableOpResolver<tOpCount>::FindOp(tflite::BuiltinOperator) const [with unsigned int tOpCount = 3]",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline/src/experiments/deit-full-int8/main.cc:19:5:int main()",
+          "bytes": 608,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline/src/experiments/deit-full-int8/model.cc:52:6:void {anonymous}::dense(const int8_t*, int8_t*, Params, int, int, int, int, const int8_t*)",
+          "bytes": 480,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline/src/experiments/deit-full-int8/model.cc:61:6:void {anonymous}::attention(Params)",
+          "bytes": 800,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline/src/experiments/deit-full-int8/model.cc:128:21:tflite::micro::TfLiteStatus Prepare(tflite::micro::TfLiteContext*, tflite::micro::TfLiteNode*)",
+          "bytes": 64,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline/src/experiments/deit-full-int8/model.cc:39:6:void {anonymous}::norm(const int8_t*, int8_t*, Params, int, int)",
+          "bytes": 80,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline/src/experiments/deit-full-int8/model.cc:56:6:void {anonymous}::residual(const int8_t*, const int8_t*, int8_t*, Params, int)",
+          "bytes": 64,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline/src/experiments/deit-full-int8/model.cc:147:21:tflite::micro::TfLiteStatus Eval(tflite::micro::TfLiteContext*, tflite::micro::TfLiteNode*)",
+          "bytes": 144,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline/src/experiments/deit-full-int8/model.cc:166:26:tflite::micro::TFLMRegistration RegisterDeitInteger()",
+          "bytes": 32,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline/src/experiments/tflm-linear/platform.cc:8:17:void DebugLog(const char*, va_list)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline/src/experiments/tflm-linear/platform.cc:16:16:int DebugVsnprintf(char*, size_t, const char*, va_list)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline/src/experiments/tflm-linear/platform.cc:21:18:void* _sbrk(ptrdiff_t)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline/src/experiments/tflm-linear/platform.cc:22:16:int _write(int, const void*, unsigned int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline/src/experiments/tflm-linear/platform.cc:23:16:int _read(int, void*, unsigned int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline/src/experiments/tflm-linear/platform.cc:24:16:int _close(int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline/src/experiments/tflm-linear/platform.cc:25:16:int _fstat(int, void*)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline/src/experiments/tflm-linear/platform.cc:26:16:int _isatty(int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline/src/experiments/tflm-linear/platform.cc:27:16:int _lseek(int, int, int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline/src/experiments/tflm-linear/platform.cc:28:16:int _getpid()",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline/src/experiments/tflm-linear/platform.cc:29:16:int _kill(int, int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline/src/experiments/tflm-linear/platform.cc:30:17:void _exit(int)",
+          "bytes": 0,
+          "kind": "static"
+        }
+      ],
+      "relevant_frames": [
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline/src/experiments/deit-full-int8/main.cc:19:5:int main()",
+          "bytes": 608,
+          "kind": "static"
+        }
+      ],
+      "note": "Sentinel reports deepest written stack word in this complete startup/main execution, 8-byte resolution. Unwritten reserved frames may escape detection. It is not a worst-case call-stack bound."
+    },
+    "tpu-hoist": {
+      "variant": "tpu-hoist",
+      "retired": 220234394,
+      "sections": {
+        ".text": 76148,
+        ".rodata": 6288208,
+        ".data": 2920,
+        ".tohost": 72,
+        ".bss": 1034996,
+        ".comment": 50,
+        ".riscv.attributes": 54
+      },
+      "reserved_stack_bytes": 65536,
+      "observed_stack_touched_bytes": 1416,
+      "arena_used": 190416,
+      "static_writable_bytes": 1037988,
+      "loadable_payload_bytes": 6367348,
+      "diagnostics_objects": {
+        "main.cc": {
+          "byte_identical": true,
+          "sha256": "458c2051ea9c478e55d5f0e7fd0ca5fc255ec095695f6249cdbcc65b008f6ba0"
+        },
+        "model.cc": {
+          "byte_identical": true,
+          "sha256": "a7227d7dd82a8253af227628a280e3b7891d4df9bcc31eb5e63b41bc2c11b831"
+        },
+        "platform.cc": {
+          "byte_identical": true,
+          "sha256": "22072a88f4721edd15b51e60320bda961c6a7f0cac0b517199aeca0ef5f7d7ce"
+        }
+      },
+      "compiler_stack_frames": [
+        {
+          "function": "/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/vendor/tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h:49:7:virtual tflite::micro::MicroMutableOpResolver<3>::~MicroMutableOpResolver()",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/vendor/tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h:78:36:tflite::micro::TfLiteStatus (* tflite::micro::MicroMutableOpResolver<tOpCount>::GetOpDataParser(tflite::BuiltinOperator) const)(const tflite::Operator*, tflite::micro::BuiltinDataAllocator*, void**) [with unsigned int tOpCount = 3]",
+          "bytes": 16,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/vendor/tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h:67:27:const tflite::micro::TFLMRegistration* tflite::micro::MicroMutableOpResolver<tOpCount>::FindOp(const char*) const [with unsigned int tOpCount = 3]",
+          "bytes": 64,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/vendor/tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h:55:27:const tflite::micro::TFLMRegistration* tflite::micro::MicroMutableOpResolver<tOpCount>::FindOp(tflite::BuiltinOperator) const [with unsigned int tOpCount = 3]",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-hoist/src/experiments/deit-full-int8/main.cc:19:5:int main()",
+          "bytes": 608,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-hoist/src/experiments/deit-full-int8/model.cc:128:21:tflite::micro::TfLiteStatus Prepare(tflite::micro::TfLiteContext*, tflite::micro::TfLiteNode*)",
+          "bytes": 64,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-hoist/src/experiments/deit-full-int8/model.cc:39:6:void {anonymous}::norm(const int8_t*, int8_t*, Params, int, int)",
+          "bytes": 80,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-hoist/src/experiments/deit-full-int8/model.cc:56:6:void {anonymous}::residual(const int8_t*, const int8_t*, int8_t*, Params, int)",
+          "bytes": 64,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-hoist/src/experiments/deit-full-int8/model.cc:166:26:tflite::micro::TFLMRegistration RegisterDeitInteger()",
+          "bytes": 32,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-hoist/src/experiments/deit-full-int8/../tflm-linear/linear_kernel.h:53:48:void project::linear(const int8_t*, const int8_t*, const int32_t*, const int32_t*, const int32_t*, int8_t*, int, int, int, const int8_t*) [with int B = 4]",
+          "bytes": 512,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-hoist/src/experiments/deit-full-int8/model.cc:147:21:tflite::micro::TfLiteStatus Eval(tflite::micro::TfLiteContext*, tflite::micro::TfLiteNode*)",
+          "bytes": 208,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-hoist/src/experiments/tflm-linear/platform.cc:8:17:void DebugLog(const char*, va_list)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-hoist/src/experiments/tflm-linear/platform.cc:16:16:int DebugVsnprintf(char*, size_t, const char*, va_list)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-hoist/src/experiments/tflm-linear/platform.cc:21:18:void* _sbrk(ptrdiff_t)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-hoist/src/experiments/tflm-linear/platform.cc:22:16:int _write(int, const void*, unsigned int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-hoist/src/experiments/tflm-linear/platform.cc:23:16:int _read(int, void*, unsigned int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-hoist/src/experiments/tflm-linear/platform.cc:24:16:int _close(int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-hoist/src/experiments/tflm-linear/platform.cc:25:16:int _fstat(int, void*)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-hoist/src/experiments/tflm-linear/platform.cc:26:16:int _isatty(int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-hoist/src/experiments/tflm-linear/platform.cc:27:16:int _lseek(int, int, int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-hoist/src/experiments/tflm-linear/platform.cc:28:16:int _getpid()",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-hoist/src/experiments/tflm-linear/platform.cc:29:16:int _kill(int, int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-hoist/src/experiments/tflm-linear/platform.cc:30:17:void _exit(int)",
+          "bytes": 0,
+          "kind": "static"
+        }
+      ],
+      "relevant_frames": [
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-hoist/src/experiments/deit-full-int8/main.cc:19:5:int main()",
+          "bytes": 608,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-hoist/src/experiments/deit-full-int8/../tflm-linear/linear_kernel.h:53:48:void project::linear(const int8_t*, const int8_t*, const int32_t*, const int32_t*, const int32_t*, int8_t*, int, int, int, const int8_t*) [with int B = 4]",
+          "bytes": 512,
+          "kind": "static"
+        }
+      ],
+      "note": "Sentinel reports deepest written stack word in this complete startup/main execution, 8-byte resolution. Unwritten reserved frames may escape detection. It is not a worst-case call-stack bound."
+    },
+    "tpu-inline-hoist": {
+      "variant": "tpu-inline-hoist",
+      "retired": 214329448,
+      "sections": {
+        ".text": 76540,
+        ".rodata": 6288208,
+        ".data": 2920,
+        ".tohost": 72,
+        ".bss": 1034996,
+        ".comment": 50,
+        ".riscv.attributes": 54
+      },
+      "reserved_stack_bytes": 65536,
+      "observed_stack_touched_bytes": 1616,
+      "arena_used": 190416,
+      "static_writable_bytes": 1037988,
+      "loadable_payload_bytes": 6367740,
+      "diagnostics_objects": {
+        "main.cc": {
+          "byte_identical": true,
+          "sha256": "458c2051ea9c478e55d5f0e7fd0ca5fc255ec095695f6249cdbcc65b008f6ba0"
+        },
+        "model.cc": {
+          "byte_identical": true,
+          "sha256": "d8a8299d61d7178f86bfa1a6d542b8aa4d3d3a371a8b88b7cb52e19c8ac81e75"
+        },
+        "platform.cc": {
+          "byte_identical": true,
+          "sha256": "22072a88f4721edd15b51e60320bda961c6a7f0cac0b517199aeca0ef5f7d7ce"
+        }
+      },
+      "compiler_stack_frames": [
+        {
+          "function": "/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/vendor/tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h:49:7:virtual tflite::micro::MicroMutableOpResolver<3>::~MicroMutableOpResolver()",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/vendor/tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h:78:36:tflite::micro::TfLiteStatus (* tflite::micro::MicroMutableOpResolver<tOpCount>::GetOpDataParser(tflite::BuiltinOperator) const)(const tflite::Operator*, tflite::micro::BuiltinDataAllocator*, void**) [with unsigned int tOpCount = 3]",
+          "bytes": 16,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/vendor/tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h:67:27:const tflite::micro::TFLMRegistration* tflite::micro::MicroMutableOpResolver<tOpCount>::FindOp(const char*) const [with unsigned int tOpCount = 3]",
+          "bytes": 64,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/vendor/tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h:55:27:const tflite::micro::TFLMRegistration* tflite::micro::MicroMutableOpResolver<tOpCount>::FindOp(tflite::BuiltinOperator) const [with unsigned int tOpCount = 3]",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline-hoist/src/experiments/deit-full-int8/main.cc:19:5:int main()",
+          "bytes": 608,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline-hoist/src/experiments/deit-full-int8/model.cc:52:6:void {anonymous}::dense(const int8_t*, int8_t*, Params, int, int, int, int, const int8_t*)",
+          "bytes": 480,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline-hoist/src/experiments/deit-full-int8/model.cc:61:6:void {anonymous}::attention(Params)",
+          "bytes": 768,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline-hoist/src/experiments/deit-full-int8/model.cc:128:21:tflite::micro::TfLiteStatus Prepare(tflite::micro::TfLiteContext*, tflite::micro::TfLiteNode*)",
+          "bytes": 64,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline-hoist/src/experiments/deit-full-int8/model.cc:39:6:void {anonymous}::norm(const int8_t*, int8_t*, Params, int, int)",
+          "bytes": 80,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline-hoist/src/experiments/deit-full-int8/model.cc:56:6:void {anonymous}::residual(const int8_t*, const int8_t*, int8_t*, Params, int)",
+          "bytes": 64,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline-hoist/src/experiments/deit-full-int8/model.cc:147:21:tflite::micro::TfLiteStatus Eval(tflite::micro::TfLiteContext*, tflite::micro::TfLiteNode*)",
+          "bytes": 144,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline-hoist/src/experiments/deit-full-int8/model.cc:166:26:tflite::micro::TFLMRegistration RegisterDeitInteger()",
+          "bytes": 32,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline-hoist/src/experiments/tflm-linear/platform.cc:8:17:void DebugLog(const char*, va_list)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline-hoist/src/experiments/tflm-linear/platform.cc:16:16:int DebugVsnprintf(char*, size_t, const char*, va_list)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline-hoist/src/experiments/tflm-linear/platform.cc:21:18:void* _sbrk(ptrdiff_t)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline-hoist/src/experiments/tflm-linear/platform.cc:22:16:int _write(int, const void*, unsigned int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline-hoist/src/experiments/tflm-linear/platform.cc:23:16:int _read(int, void*, unsigned int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline-hoist/src/experiments/tflm-linear/platform.cc:24:16:int _close(int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline-hoist/src/experiments/tflm-linear/platform.cc:25:16:int _fstat(int, void*)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline-hoist/src/experiments/tflm-linear/platform.cc:26:16:int _isatty(int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline-hoist/src/experiments/tflm-linear/platform.cc:27:16:int _lseek(int, int, int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline-hoist/src/experiments/tflm-linear/platform.cc:28:16:int _getpid()",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline-hoist/src/experiments/tflm-linear/platform.cc:29:16:int _kill(int, int)",
+          "bytes": 0,
+          "kind": "static"
+        },
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline-hoist/src/experiments/tflm-linear/platform.cc:30:17:void _exit(int)",
+          "bytes": 0,
+          "kind": "static"
+        }
+      ],
+      "relevant_frames": [
+        {
+          "function": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/tpu-evaluation-2026-11-02/build/tpu-inline-hoist/src/experiments/deit-full-int8/main.cc:19:5:int main()",
+          "bytes": 608,
+          "kind": "static"
+        }
+      ],
+      "note": "Sentinel reports deepest written stack word in this complete startup/main execution, 8-byte resolution. Unwritten reserved frames may escape detection. It is not a worst-case call-stack bound."
+    }
+  },
+  "cache": [
+    {
+      "variant": "qmac-control",
+      "configuration": "16:4:64",
+      "roi_accesses": 862447442,
+      "roi_misses": 385,
+      "miss_rate": 4.464040140315008e-07,
+      "method": "Deterministic capped runs from reset, after-minus-before inference; same warmup prefix",
+      "warning": "Functional random-replacement model, no timing. Cache traces use instruction start addresses. Installed Spike Bytes Read counter is malformed and excluded."
+    },
+    {
+      "variant": "qmac-control",
+      "configuration": "64:4:64",
+      "roi_accesses": 862447442,
+      "roi_misses": 77,
+      "miss_rate": 8.928080280630017e-08,
+      "method": "Deterministic capped runs from reset, after-minus-before inference; same warmup prefix",
+      "warning": "Functional random-replacement model, no timing. Cache traces use instruction start addresses. Installed Spike Bytes Read counter is malformed and excluded."
+    },
+    {
+      "variant": "qmac-inline",
+      "configuration": "16:4:64",
+      "roi_accesses": 830264926,
+      "roi_misses": 292,
+      "miss_rate": 3.5169497211785143e-07,
+      "method": "Deterministic capped runs from reset, after-minus-before inference; same warmup prefix",
+      "warning": "Functional random-replacement model, no timing. Cache traces use instruction start addresses. Installed Spike Bytes Read counter is malformed and excluded."
+    },
+    {
+      "variant": "qmac-inline",
+      "configuration": "64:4:64",
+      "roi_accesses": 830264926,
+      "roi_misses": 77,
+      "miss_rate": 9.274148237354302e-08,
+      "method": "Deterministic capped runs from reset, after-minus-before inference; same warmup prefix",
+      "warning": "Functional random-replacement model, no timing. Cache traces use instruction start addresses. Installed Spike Bytes Read counter is malformed and excluded."
+    },
+    {
+      "variant": "tpu-hoist",
+      "configuration": "16:4:64",
+      "roi_accesses": 220234394,
+      "roi_misses": 181,
+      "miss_rate": 8.218516495656895e-07,
+      "method": "Deterministic capped runs from reset, after-minus-before inference; same warmup prefix",
+      "warning": "Functional random-replacement model, no timing. Cache traces use instruction start addresses. Installed Spike Bytes Read counter is malformed and excluded."
+    },
+    {
+      "variant": "tpu-hoist",
+      "configuration": "64:4:64",
+      "roi_accesses": 220234394,
+      "roi_misses": 64,
+      "miss_rate": 2.9059947829947033e-07,
+      "method": "Deterministic capped runs from reset, after-minus-before inference; same warmup prefix",
+      "warning": "Functional random-replacement model, no timing. Cache traces use instruction start addresses. Installed Spike Bytes Read counter is malformed and excluded."
+    },
+    {
+      "variant": "tpu-inline-hoist",
+      "configuration": "16:4:64",
+      "roi_accesses": 214329448,
+      "roi_misses": 322,
+      "miss_rate": 1.5023600490026923e-06,
+      "method": "Deterministic capped runs from reset, after-minus-before inference; same warmup prefix",
+      "warning": "Functional random-replacement model, no timing. Cache traces use instruction start addresses. Installed Spike Bytes Read counter is malformed and excluded."
+    },
+    {
+      "variant": "tpu-inline-hoist",
+      "configuration": "64:4:64",
+      "roi_accesses": 214329448,
+      "roi_misses": 79,
+      "miss_rate": 3.6859144059382825e-07,
+      "method": "Deterministic capped runs from reset, after-minus-before inference; same warmup prefix",
+      "warning": "Functional random-replacement model, no timing. Cache traces use instruction start addresses. Installed Spike Bytes Read counter is malformed and excluded."
+    }
+  ],
+  "pairs": [
+    {
+      "control": "qmac-control",
+      "inline": "qmac-inline",
+      "extra_text_bytes": 152,
+      "text_growth": 0.0019824707846409773,
+      "instruction_reduction": 0.037315335906579206,
+      "instructions_saved": 32182516,
+      "extra_observed_stack_bytes": 0
+    },
+    {
+      "control": "tpu-control",
+      "inline": "tpu-inline",
+      "extra_text_bytes": 416,
+      "text_growth": 0.005466204141700848,
+      "instruction_reduction": 0.022046212363500017,
+      "instructions_saved": 5781287,
+      "extra_observed_stack_bytes": 248
+    },
+    {
+      "control": "tpu-hoist",
+      "inline": "tpu-inline-hoist",
+      "extra_text_bytes": 392,
+      "text_growth": 0.005147869937490057,
+      "instruction_reduction": 0.026812097296664783,
+      "instructions_saved": 5904946,
+      "extra_observed_stack_bytes": 200
+    }
+  ],
+  "recommendation": "Use parameter hoisting first on TPU. Keep optional inlining when hundreds of code bytes and measured stack margin are affordable. No RTL speedup claim.",
+  "caveats": [
+    "Stack sentinel is the deepest written word, not a formal worst-case bound",
+    "No stack reservation or static data increase. Code itself resides in RAM in current linker layout.",
+    "Cache model is functional and uses instruction start addresses, 4 ways and 64-byte lines. It is not CV-Wally.",
+    "Installed Spike byte-read counter contains address-inflated values and is excluded. Access totals equal capped retired counters.",
+    "Cache ROI uses identical warmup prefix with deterministic before/after subtraction. No data-cache or cycle modeling."
+  ]
+}

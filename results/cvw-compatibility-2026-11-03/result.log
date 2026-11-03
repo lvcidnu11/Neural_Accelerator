@@ -1,0 +1,12 @@
+COMMAND ["/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/cvw-compatibility-2026-11-03/build/obj/controller_probe"]
+PASS RV64 ADDI instruction=00000013 illegal=0
+PASS RV64 MUL instruction=02000033 illegal=0
+PASS RV64 LD instruction=00003003 illegal=0
+PASS qmac8 custom-0 instruction=4005050b illegal=1
+PASS requant8 custom-0 instruction=4205050b illegal=1
+PASS xtpu descriptor custom-0 instruction=4405000b illegal=1
+PASS: unchanged CV-Wally decoder rejects all three project custom opcodes
+- /Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/cvw-compatibility-2026-11-03/build/controller_probe.sv:92: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.050 2026-07-01
+- Verilator: $finish at 8ns; walltime 0.000 s; speed 333.334 us/s
+- Verilator: cpu 0.000 s on 1 threads; allocated 2 MB

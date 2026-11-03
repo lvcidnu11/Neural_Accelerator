@@ -55,9 +55,26 @@ def full():
     fixtures()
     run('deit-full-int8',sys.executable,'run.py')
 
+def tpu():
+    run('tpu-spike',sys.executable,'run.py')
+
+def checkpoint():
+    # Each step writes its own ignored build folder; the collector uses fresh
+    # B0, B1, X1, X2 and TPU measurements, not committed reference numbers.
+    test()
+    full()
+    run('tpu-spike',sys.executable,'build_extension.py')
+    run('b0-full-inference-2026-11-03',sys.executable,'run.py')
+    run('full-inference-baseline-2026-11-03',sys.executable,'run.py')
+    run('x1-qmac-inference-2026-11-03',sys.executable,'run.py')
+    run('x1-qmac-inference-2026-11-03',sys.executable,'check_kernel.py')
+    run('tpu-evaluation-2026-11-02',sys.executable,'evaluate.py','--variants','qmac-inline','tpu-inline-hoist')
+    run('b0-full-inference-2026-11-03',sys.executable,'collect.py')
+    print('Five-stage summary: experiments/b0-full-inference-2026-11-03/build/REPORT.md',flush=True)
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('stage',choices=['setup','fixtures','test','bench','full','all'])
+    parser.add_argument('stage',choices=['setup','fixtures','test','bench','full','tpu','checkpoint','all'])
     a=parser.parse_args()
     if a.stage=='all':
         test();bench();full()

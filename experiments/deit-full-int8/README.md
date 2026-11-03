@@ -1,7 +1,15 @@
 > Repository entry point and current status: [root README](../../README.md).
 > Experiment-specific results below retain their stated measurement scope.
 
-# Complete DeiT-Tiny integer inference — 2026-10-25
+# Complete DeiT-Tiny integer inference
+
+2026-11-03 update: a matched full-model scalar baseline is now measured at
+6,095,818,622 retired instructions. The final CPU design uses 830,264,926,
+and the TPU extension uses 214,329,448. All three preserve 14 stage hashes
+and 1000 exact logits. See [the complete comparison](../../docs/full-inference-comparison.md).
+These are instruction counts, with no hardware speedup claim.
+
+The original checkpoint below dates to 2026-10-25.
 
 The complete non-distilled DeiT-Tiny model executes through TFLite Micro on
 bare-metal RV64IMC Spike, using the original checkpoint's learned matrices:
@@ -109,7 +117,7 @@ Mathematical MACs are 1,253,683,200; AV padding raises executed mathematical
 products to 1,255,044,864. QK's output-channel tail uses the scalar fallback;
 the exact qmac8 count follows from these padding/tail rules and is asserted.
 
-No full-model baseline was measured, so there is no end-to-end speedup claim.
+The original checkpoint measured only the qmac path. The update above adds a scalar instruction-count comparison. There is still no hardware end-to-end speedup claim.
 No cycles, CPI, Fmax, physical area or hardware speedup is measured. Static
 workspace buffers and the TFLM arena are distinct allocations; arena usage
 alone is not total RAM usage. The 32 MiB Spike layout has sufficient space.
@@ -148,7 +156,7 @@ manifest.json, each build.json, host/UBSan results, and saved Spike commands,
 debugger results, histograms, ELF, disassembly and map.
 
 Next requirements: representative calibration and accuracy; comparison with
-an appropriate full-model software baseline; finer operator contribution and
+finer operator contribution and
 three-bottleneck analysis; CV-Wally integration, cycles and physical metrics.
 
 AI assistance: Codex helped author the project integer profile, source, export,

@@ -12,3 +12,8 @@ __pycache__/
 *.part
 *.dylib
 *.so
+
+# Presentations are maintained locally and are not submitted to Git.
+*.pptx
+*.ppt
+/presentations/

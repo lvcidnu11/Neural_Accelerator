@@ -1,0 +1,561 @@
+{
+  "sha256": {
+    "experiments/tpu-spike/tests.cc": "562c808e777dfbc0e593fb7ba706abb4e408713612d48bb4b0559aac8ca44ba1",
+    "experiments/tpu-spike/run.py": "c67d50dd3b3ba1cbe9851b22fd19e73ea09639e82a635d79cef4a526b920dd3e",
+    "experiments/tpu-spike/tile.h": "e14214d2444e9e8109b804b68f360d2a1855e78c6f128258f6ad9f68e06bccde",
+    "experiments/tpu-spike/extension.cc": "deb1ea864c0f59a883bb5c54780d512c13df35b174766bcba3130a23c0d4bdda",
+    "experiments/tpu-spike/negative.cc": "2900f8318d87ac18de7023c1709fd3b18a647f896db29ca54948082752506ff2",
+    "experiments/tpu-spike/build_extension.py": "f092822824fec907117012a101a0aa209f7689c3024910dec8a2f7cc886518c1",
+    "experiments/deit-full-int8/main.cc": "97027134d779d32b9d7892acbf858a6ff32eba75b09a609fafd1dc7e9c943a2d",
+    "experiments/deit-full-int8/export_model.py": "11e7b19fe1689293a6423bef85075a84b26646a127e6092871ada1d9ac30fb27",
+    "experiments/deit-full-int8/build.py": "c84cacb92142fa06e04eb026277084a2030c6aec88325f139d79d59478d1fc67",
+    "experiments/deit-full-int8/run.py": "16a5ea6ad1c234d03dc0b2ab86c5d2dc0ed20fab4489c38eea062d8534486538",
+    "experiments/deit-full-int8/model.cc": "2bfab88491cbd2d58e18e8e9128b74cfdba452fe9aa894a8539e6342fd5f28ee",
+    "experiments/deit-full-int8/profile_spike.py": "54873c31973a10a37184bbfdfb12545848ac11ae6872c70ec6af20b55f9e5663",
+    "experiments/tflm-linear/bootstrap.py": "902f9ca90582fde53fb227781eb28b85de85cd6f9d1e2f9f02bdfb6c49831cbf",
+    "experiments/tflm-linear/main.cc": "6c60d4707b3d8009d46e96db7c7e3b39f95dc6ac8ffb316a14b3f61fd2852392",
+    "experiments/tflm-linear/export_model.py": "f3a0a088d8f4d6f43ed35581c162e6f2cdc7f51d489e6ef64562ccc3bbc1bb89",
+    "experiments/tflm-linear/build.py": "aedac4b7c9dedd2353a22abd4096b37138771a89cfb35c94eb79dd9c9727fd81",
+    "experiments/tflm-linear/compare_stages.py": "8fdb57941184f2d639e965da0d75c2064260598db3c8340d7ae67bce5d0ef6f0",
+    "experiments/tflm-linear/run.py": "afaef01c5c7f77d22cb919d1518d659c4c3d535c17dd6a8685211a728548b8ee",
+    "experiments/tflm-linear/fc_adapter.cc": "0918d20ea340445e8b0d39cea5d2d51a19deb1a1b2dd87b8c2c1b3f39ff9588e",
+    "experiments/tflm-linear/blocking_tests.cc": "f8358016cd7954de044d35299dfbb57becaba89debcc85b2a694871d30d426ce",
+    "experiments/tflm-linear/linear_kernel.h": "ea1c1d0fe3bf776e2bc9d3cf0ad0b0388d990ed3cee48b3e54a56ad5b2742fa3",
+    "experiments/tflm-linear/platform.cc": "aec1595d9bcb22ddfd99c39f4cdc173d0404103c37892f6ee104f6774b911717",
+    "experiments/tflm-linear/profile.py": "6b64baeb48277d0fc9ee9a27ef1b4ecac5c61e16333c4a580becafa739f76c2a",
+    "experiments/tflm-linear/report_optimizations.py": "657834ab01a38f5d0eb601a37c41d85fe28dc3cc4505b1a8dfb692bd02bb7d45",
+    "experiments/tflm-linear/link.ld": "482e3f83aeb6fed88f6af6730c91593f737f4dfb0fc945a8280228d6f7ee35b9",
+    "experiments/tflm-linear/benchmark_optimizations.py": "52dcc6b64977dd64a5e45ae0f0827aa7be9abd79a0ebbd8974d972b47585a219",
+    "experiments/tflm-linear/start.S": "0c87d24ef0e16cc59e0735f1b76abe37c6ca605aa11a447f33d9be3c84347dad",
+    "experiments/tflm-linear/build_extension.py": "cfb46296bdb283d2cefe92ed187e03f3222e68c9fbee7ccbb99a90dbf6dd410f",
+    "experiments/tflm-linear/gelu_lut.cc": "9aeb15a3ee5758e0d344a8ab64906a615aa8951b992ec3adb013c8f0209d3f74",
+    "experiments/tpu-spike/build/libtpu.dylib": "8ad8aa590b472ecd97494ab694acf12a60508f272fd8fff1715dde535d07a5f6",
+    "experiments/tflm-linear/build/libqmac8.dylib": "76d63b6c8a1c9809d8ecd09f30af1193d5393185a6de155befa4839eefbdbc2b",
+    "scripts/project.py": "9bb1b3c708b754389840df1f0911c752b6d519bc85107b72c71063bf23f8fc08",
+    "experiments/deit-full-int8/build/model.tflite": "958de3ce3f1b421a6de6c25d2c132f46ae09d1728b000586a7e0848118a6ed01",
+    "experiments/deit-full-int8/build/input.bin": "3325824ca88991b5714d63f46474418805015cd2bce9cea8ec6e3bef83820ecc",
+    "experiments/deit-full-int8/build/expected.bin": "a12dab7aa2a8289584e50234b31cbf6d8399bd2c9fcd3d1a8fcf7db78fc3377c",
+    "experiments/deit-full-int8/build/reference.json": "ca761c6c9d3d052b81f0a82b829a12b3c188bcc6c2326b81f312e8ef38db2331",
+    "experiments/deit-full-int8/build/riscv/build.json": "4ba97a7a2aa494ee1924afcfd6ef58128b8ad2629a38f2d6e62ad18307b1aa46",
+    "experiments/deit-full-int8/build/riscv/program.elf": "023399e89038471d15ae35b61a9ae9676f5be17e2fd39c0bc2fdda5134409101",
+    "experiments/deit-full-int8/build/riscv-tpu/build.json": "e3c9aca2e4809c1b14b6c1d8ac515651d32b588ed7c003b894c647f6d2e0007a",
+    "experiments/deit-full-int8/build/riscv-tpu/program.elf": "c40d92875fe54898e37f6f33be40703b1cfedf85ef0855fb5a0602abfb47e2f5",
+    "experiments/deit-full-int8/build/host-ubsan-tpu/build.json": "5b6add238f9a6e16db58628ef8ff763dd1a9bc040ee93c58146bfcc46237e8e9",
+    "experiments/deit-full-int8/build/host-ubsan-tpu/program": "b38d52bd37b34a77266b8fff74741340431b88abe2541a4590bd27dd79e74786"
+  },
+  "commands": [
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "<repo>/experiments/tpu-spike/build_extension.py"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "<repo>/experiments/tflm-linear/build_extension.py"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "clang++",
+        "-std=c++17",
+        "-O1",
+        "-fsanitize=undefined",
+        "-fno-sanitize-recover=all",
+        "<repo>/experiments/tpu-spike/tests.cc",
+        "-o",
+        "<repo>/experiments/tpu-spike/build/tests-host"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "<repo>/experiments/tpu-spike/build/tests-host"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "<repo>/experiments/tflm-linear/vendor/xpack-riscv-none-elf-gcc-15.2.0-1/bin/riscv-none-elf-g++",
+        "-std=c++17",
+        "-O2",
+        "-march=rv64imc",
+        "-mabi=lp64",
+        "-mcmodel=medany",
+        "-nostdlib",
+        "-nostartfiles",
+        "-Wl,--no-relax",
+        "-T",
+        "<repo>/experiments/tflm-linear/link.ld",
+        "<repo>/experiments/tflm-linear/start.S",
+        "<repo>/experiments/tpu-spike/tests.cc",
+        "-lc",
+        "-lgcc",
+        "-o",
+        "<repo>/experiments/tpu-spike/build/tests.elf"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "<repo>/experiments/tflm-linear/vendor/xpack-riscv-none-elf-gcc-15.2.0-1/bin/riscv-none-elf-g++",
+        "-std=c++17",
+        "-O2",
+        "-march=rv64imc",
+        "-mabi=lp64",
+        "-mcmodel=medany",
+        "-nostdlib",
+        "-nostartfiles",
+        "-Wl,--no-relax",
+        "-T",
+        "<repo>/experiments/tflm-linear/link.ld",
+        "<repo>/experiments/tflm-linear/start.S",
+        "-DLOG_SMOKE",
+        "<repo>/experiments/tpu-spike/tests.cc",
+        "-lc",
+        "-lgcc",
+        "-o",
+        "<repo>/experiments/tpu-spike/build/tests-logged.elf"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "spike",
+        "--isa=RV64IMC",
+        "-m32",
+        "--extlib=<repo>/experiments/tflm-linear/build/libqmac8.dylib",
+        "--extension=xqmac8",
+        "--extlib=<repo>/experiments/tpu-spike/build/libtpu.dylib",
+        "--extension=xtpu",
+        "<repo>/experiments/tpu-spike/build/tests.elf"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "spike",
+        "--isa=RV64IMC",
+        "-m32",
+        "--extlib=<repo>/experiments/tflm-linear/build/libqmac8.dylib",
+        "--extension=xqmac8",
+        "--extlib=<repo>/experiments/tpu-spike/build/libtpu.dylib",
+        "--extension=xtpu",
+        "-l",
+        "--log-commits",
+        "--log=<repo>/experiments/tpu-spike/build/commits.log",
+        "<repo>/experiments/tpu-spike/build/tests-logged.elf"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "<repo>/experiments/tflm-linear/vendor/xpack-riscv-none-elf-gcc-15.2.0-1/bin/riscv-none-elf-g++",
+        "-std=c++17",
+        "-O2",
+        "-march=rv64imc",
+        "-mabi=lp64",
+        "-mcmodel=medany",
+        "-nostdlib",
+        "-nostartfiles",
+        "-Wl,--no-relax",
+        "-T",
+        "<repo>/experiments/tflm-linear/link.ld",
+        "<repo>/experiments/tflm-linear/start.S",
+        "-DCASE=0",
+        "<repo>/experiments/tpu-spike/negative.cc",
+        "-lc",
+        "-lgcc",
+        "-o",
+        "<repo>/experiments/tpu-spike/build/negative-0.elf"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "spike",
+        "--isa=RV64IMC",
+        "-m32",
+        "--instructions=2000",
+        "-l",
+        "--log=<repo>/experiments/tpu-spike/build/negative-0-trace.log",
+        "<repo>/experiments/tpu-spike/build/negative-0.elf"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "<repo>/experiments/tflm-linear/vendor/xpack-riscv-none-elf-gcc-15.2.0-1/bin/riscv-none-elf-g++",
+        "-std=c++17",
+        "-O2",
+        "-march=rv64imc",
+        "-mabi=lp64",
+        "-mcmodel=medany",
+        "-nostdlib",
+        "-nostartfiles",
+        "-Wl,--no-relax",
+        "-T",
+        "<repo>/experiments/tflm-linear/link.ld",
+        "<repo>/experiments/tflm-linear/start.S",
+        "-DCASE=1",
+        "<repo>/experiments/tpu-spike/negative.cc",
+        "-lc",
+        "-lgcc",
+        "-o",
+        "<repo>/experiments/tpu-spike/build/negative-1.elf"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "spike",
+        "--isa=RV64IMC",
+        "-m32",
+        "--instructions=2000",
+        "-l",
+        "--log=<repo>/experiments/tpu-spike/build/negative-1-trace.log",
+        "--extlib=<repo>/experiments/tflm-linear/build/libqmac8.dylib",
+        "--extension=xqmac8",
+        "--extlib=<repo>/experiments/tpu-spike/build/libtpu.dylib",
+        "--extension=xtpu",
+        "<repo>/experiments/tpu-spike/build/negative-1.elf"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "<repo>/experiments/tflm-linear/vendor/xpack-riscv-none-elf-gcc-15.2.0-1/bin/riscv-none-elf-g++",
+        "-std=c++17",
+        "-O2",
+        "-march=rv64imc",
+        "-mabi=lp64",
+        "-mcmodel=medany",
+        "-nostdlib",
+        "-nostartfiles",
+        "-Wl,--no-relax",
+        "-T",
+        "<repo>/experiments/tflm-linear/link.ld",
+        "<repo>/experiments/tflm-linear/start.S",
+        "-DCASE=2",
+        "<repo>/experiments/tpu-spike/negative.cc",
+        "-lc",
+        "-lgcc",
+        "-o",
+        "<repo>/experiments/tpu-spike/build/negative-2.elf"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "spike",
+        "--isa=RV64IMC",
+        "-m32",
+        "--instructions=2000",
+        "-l",
+        "--log=<repo>/experiments/tpu-spike/build/negative-2-trace.log",
+        "--extlib=<repo>/experiments/tflm-linear/build/libqmac8.dylib",
+        "--extension=xqmac8",
+        "--extlib=<repo>/experiments/tpu-spike/build/libtpu.dylib",
+        "--extension=xtpu",
+        "<repo>/experiments/tpu-spike/build/negative-2.elf"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "<repo>/experiments/tflm-linear/vendor/xpack-riscv-none-elf-gcc-15.2.0-1/bin/riscv-none-elf-g++",
+        "-std=c++17",
+        "-O2",
+        "-march=rv64imc",
+        "-mabi=lp64",
+        "-mcmodel=medany",
+        "-nostdlib",
+        "-nostartfiles",
+        "-Wl,--no-relax",
+        "-T",
+        "<repo>/experiments/tflm-linear/link.ld",
+        "<repo>/experiments/tflm-linear/start.S",
+        "-DCASE=3",
+        "<repo>/experiments/tpu-spike/negative.cc",
+        "-lc",
+        "-lgcc",
+        "-o",
+        "<repo>/experiments/tpu-spike/build/negative-3.elf"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "spike",
+        "--isa=RV64IMC",
+        "-m32",
+        "--instructions=2000",
+        "-l",
+        "--log=<repo>/experiments/tpu-spike/build/negative-3-trace.log",
+        "--extlib=<repo>/experiments/tflm-linear/build/libqmac8.dylib",
+        "--extension=xqmac8",
+        "--extlib=<repo>/experiments/tpu-spike/build/libtpu.dylib",
+        "--extension=xtpu",
+        "<repo>/experiments/tpu-spike/build/negative-3.elf"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "<repo>/experiments/tflm-linear/vendor/xpack-riscv-none-elf-gcc-15.2.0-1/bin/riscv-none-elf-g++",
+        "-std=c++17",
+        "-O2",
+        "-march=rv64imc",
+        "-mabi=lp64",
+        "-mcmodel=medany",
+        "-nostdlib",
+        "-nostartfiles",
+        "-Wl,--no-relax",
+        "-T",
+        "<repo>/experiments/tflm-linear/link.ld",
+        "<repo>/experiments/tflm-linear/start.S",
+        "-DCASE=4",
+        "<repo>/experiments/tpu-spike/negative.cc",
+        "-lc",
+        "-lgcc",
+        "-o",
+        "<repo>/experiments/tpu-spike/build/negative-4.elf"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "spike",
+        "--isa=RV64IMC",
+        "-m32",
+        "--instructions=2000",
+        "-l",
+        "--log=<repo>/experiments/tpu-spike/build/negative-4-trace.log",
+        "--extlib=<repo>/experiments/tflm-linear/build/libqmac8.dylib",
+        "--extension=xqmac8",
+        "--extlib=<repo>/experiments/tpu-spike/build/libtpu.dylib",
+        "--extension=xtpu",
+        "<repo>/experiments/tpu-spike/build/negative-4.elf"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "<repo>/experiments/tflm-linear/vendor/xpack-riscv-none-elf-gcc-15.2.0-1/bin/riscv-none-elf-g++",
+        "-std=c++17",
+        "-O2",
+        "-march=rv64imc",
+        "-mabi=lp64",
+        "-mcmodel=medany",
+        "-nostdlib",
+        "-nostartfiles",
+        "-Wl,--no-relax",
+        "-T",
+        "<repo>/experiments/tflm-linear/link.ld",
+        "<repo>/experiments/tflm-linear/start.S",
+        "-DCASE=5",
+        "<repo>/experiments/tpu-spike/negative.cc",
+        "-lc",
+        "-lgcc",
+        "-o",
+        "<repo>/experiments/tpu-spike/build/negative-5.elf"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "spike",
+        "--isa=RV64IMC",
+        "-m32",
+        "--instructions=2000",
+        "-l",
+        "--log=<repo>/experiments/tpu-spike/build/negative-5-trace.log",
+        "--extlib=<repo>/experiments/tflm-linear/build/libqmac8.dylib",
+        "--extension=xqmac8",
+        "--extlib=<repo>/experiments/tpu-spike/build/libtpu.dylib",
+        "--extension=xtpu",
+        "<repo>/experiments/tpu-spike/build/negative-5.elf"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "<repo>/experiments/tflm-linear/vendor/xpack-riscv-none-elf-gcc-15.2.0-1/bin/riscv-none-elf-g++",
+        "-std=c++17",
+        "-O2",
+        "-march=rv64imc",
+        "-mabi=lp64",
+        "-mcmodel=medany",
+        "-nostdlib",
+        "-nostartfiles",
+        "-Wl,--no-relax",
+        "-T",
+        "<repo>/experiments/tflm-linear/link.ld",
+        "<repo>/experiments/tflm-linear/start.S",
+        "-DCASE=6",
+        "<repo>/experiments/tpu-spike/negative.cc",
+        "-lc",
+        "-lgcc",
+        "-o",
+        "<repo>/experiments/tpu-spike/build/negative-6.elf"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "spike",
+        "--isa=RV64IMC",
+        "-m32",
+        "--instructions=2000",
+        "-l",
+        "--log=<repo>/experiments/tpu-spike/build/negative-6-trace.log",
+        "--extlib=<repo>/experiments/tflm-linear/build/libqmac8.dylib",
+        "--extension=xqmac8",
+        "--extlib=<repo>/experiments/tpu-spike/build/libtpu.dylib",
+        "--extension=xtpu",
+        "<repo>/experiments/tpu-spike/build/negative-6.elf"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "<repo>/experiments/tflm-linear/vendor/xpack-riscv-none-elf-gcc-15.2.0-1/bin/riscv-none-elf-g++",
+        "-std=c++17",
+        "-O2",
+        "-march=rv64imc",
+        "-mabi=lp64",
+        "-mcmodel=medany",
+        "-nostdlib",
+        "-nostartfiles",
+        "-Wl,--no-relax",
+        "-T",
+        "<repo>/experiments/tflm-linear/link.ld",
+        "<repo>/experiments/tflm-linear/start.S",
+        "-DCASE=7",
+        "<repo>/experiments/tpu-spike/negative.cc",
+        "-lc",
+        "-lgcc",
+        "-o",
+        "<repo>/experiments/tpu-spike/build/negative-7.elf"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "spike",
+        "--isa=RV64IMC",
+        "-m32",
+        "--instructions=2000",
+        "-l",
+        "--log=<repo>/experiments/tpu-spike/build/negative-7-trace.log",
+        "--extlib=<repo>/experiments/tflm-linear/build/libqmac8.dylib",
+        "--extension=xqmac8",
+        "--extlib=<repo>/experiments/tpu-spike/build/libtpu.dylib",
+        "--extension=xtpu",
+        "<repo>/experiments/tpu-spike/build/negative-7.elf"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "<repo>/experiments/tflm-linear/vendor/xpack-riscv-none-elf-gcc-15.2.0-1/bin/riscv-none-elf-g++",
+        "-std=c++17",
+        "-O2",
+        "-march=rv64imc",
+        "-mabi=lp64",
+        "-mcmodel=medany",
+        "-nostdlib",
+        "-nostartfiles",
+        "-Wl,--no-relax",
+        "-T",
+        "<repo>/experiments/tflm-linear/link.ld",
+        "<repo>/experiments/tflm-linear/start.S",
+        "-DCASE=8",
+        "<repo>/experiments/tpu-spike/negative.cc",
+        "-lc",
+        "-lgcc",
+        "-o",
+        "<repo>/experiments/tpu-spike/build/negative-8.elf"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "spike",
+        "--isa=RV64IMC",
+        "-m32",
+        "--instructions=2000",
+        "-l",
+        "--log=<repo>/experiments/tpu-spike/build/negative-8-trace.log",
+        "--extlib=<repo>/experiments/tflm-linear/build/libqmac8.dylib",
+        "--extension=xqmac8",
+        "--extlib=<repo>/experiments/tpu-spike/build/libtpu.dylib",
+        "--extension=xtpu",
+        "<repo>/experiments/tpu-spike/build/negative-8.elf"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "spike",
+        "--help"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "<repo>/experiments/tflm-linear/vendor/xpack-riscv-none-elf-gcc-15.2.0-1/bin/riscv-none-elf-g++",
+        "--version"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "<repo>/experiments/deit-full-int8/build.py",
+        "--target",
+        "riscv"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "<repo>/experiments/deit-full-int8/profile_spike.py"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "<repo>/experiments/deit-full-int8/build.py",
+        "--target",
+        "host",
+        "--sanitize",
+        "--tpu"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "<repo>/experiments/deit-full-int8/build.py",
+        "--target",
+        "riscv",
+        "--tpu"
+      ]
+    },
+    {
+      "cwd": "<repo>/experiments/tpu-spike",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "<repo>/experiments/deit-full-int8/profile_spike.py",
+        "--tpu"
+      ]
+    }
+  ]
+}

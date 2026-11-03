@@ -1,0 +1,2 @@
+COMMAND ["/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/b0-full-inference-2026-11-03/build/scalar-b0/host/program"]
+PASS: full DeiT-Tiny: 14 nodes, 12 complete blocks, 1000 exact logits; top1=38 arena=190416

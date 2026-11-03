@@ -15,11 +15,23 @@ base=importlib.util.module_from_spec(spec);spec.loader.exec_module(base)
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--target',choices=['host','riscv'],default='host')
     parser.add_argument('--sanitize',action='store_true')
-    a=parser.parse_args();out=BUILD/(a.target+('-ubsan' if a.sanitize else ''));out.mkdir(parents=True,exist_ok=True)
+    parser.add_argument('--tpu',action='store_true')
+    parser.add_argument('--scalar-baseline',action='store_true')
+    parser.add_argument('--inline-linear',action='store_true')
+    parser.add_argument('--hoist-tpu',action='store_true')
+    a=parser.parse_args()
+    if a.scalar_baseline and a.tpu: parser.error('--scalar-baseline and --tpu are mutually exclusive')
+    if a.hoist_tpu and not a.tpu: parser.error('--hoist-tpu requires --tpu')
+    suffix=('-inline' if a.inline_linear else '')+('-hoist' if a.hoist_tpu else '')
+    out=BUILD/(a.target+('-ubsan' if a.sanitize else '')+('-scalar' if a.scalar_baseline else ('-tpu' if a.tpu else ''))+suffix);out.mkdir(parents=True,exist_ok=True)
     if a.target=='host': compiler='clang++';flags=base.COMMON+(['-fsanitize=undefined','-fno-sanitize-recover=all'] if a.sanitize else [])
     else:
         compiler=str(PARENT/'vendor/xpack-riscv-none-elf-gcc-15.2.0-1/bin/riscv-none-elf-g++')
         flags=base.COMMON+['-march=rv64imc','-mabi=lp64','-mcmodel=medany','-fno-use-cxa-atexit']
+    if a.tpu: flags=flags+['-DUSE_TPU']
+    if a.scalar_baseline: flags=flags+['-DPROJECT_SCALAR_BASELINE']
+    if a.inline_linear: flags=flags+['-DPROJECT_LINEAR_INLINE']
+    if a.hoist_tpu: flags=flags+['-DTPU_HOIST_PARAMS']
     library=out/'libtflm.a';shutil.copy2(PARENT/'build'/a.target/'libtflm.a',library)
     objects=[]
     for source in [ROOT/'main.cc',ROOT/'model.cc',PARENT/'platform.cc']:

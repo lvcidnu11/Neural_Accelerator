@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-03",
+  "scope": "Complete DeiT-Tiny Invoke including 14 diagnostic stage hashes, same input and quantization",
+  "baseline": "Software-optimized scalar RV64IMC, B=4/fused GELU LUT/Linear inline, scalar MAC/software requant",
+  "configuration_instructions": {
+    "scalar": 6095818622,
+    "cpu_design": 830264926,
+    "tpu": 214329448
+  },
+  "reductions": {
+    "cpu_vs_scalar": 0.8637976328554875,
+    "tpu_vs_cpu": 0.7418541464438545,
+    "tpu_vs_scalar": 0.9648399236771124
+  },
+  "instruction_count_ratios": {
+    "scalar_over_cpu": 7.3420163023964715,
+    "scalar_over_tpu": 28.441348955464115,
+    "cpu_over_tpu": 3.8737790525173192
+  },
+  "scalar_kernel_tests": {
+    "variant": "scalar-b4-inline",
+    "cases": 640,
+    "host_ubsan": "PASS",
+    "spike": "PASS",
+    "seed": 6455
+  },
+  "canonical_integration": {
+    ".text": {
+      "identical": true,
+      "sha256": "405937e56e241f18a75db5058c66acee8892b41f25dc2d189808a4c516a0c90f"
+    },
+    ".rodata": {
+      "identical": true,
+      "sha256": "d2d7cf1ba8cd1a0b3102d5e31a8da9d251c3208c4cfd4568c975700ff05cbb57"
+    },
+    ".data": {
+      "identical": true,
+      "sha256": "a9f4b04d6f7ac077ace58d1a0a42abfe850ee6551a7bc0904ad5c840a1a333ed"
+    }
+  },
+  "limitations": [
+    "CPU instruction counts are not measured hardware speedup",
+    "One synthetic input, no representative calibration/accuracy",
+    "No integrated RTL cycles/CPI/Fmax/SAED area"
+  ]
+}

@@ -1,5 +1,44 @@
 # RV64IMC W8A8 DeiT-Tiny Acceleration
 
+## ISA checkpoint: start here
+
+This branch contains the complete bare-metal W8A8 DeiT-Tiny workload, model
+conversion, qmac8/requant8 Spike extensions, tests and incremental full-inference
+results. The seven-item checkpoint and the five-stage configuration definitions
+are in [docs/checkpoint.md](docs/checkpoint.md). This checkpoint does **not**
+require CV-Wally or PPA evaluation.
+
+From the repository root, after installing the prerequisites in
+[docs/reproduction.md](docs/reproduction.md):
+
+```sh
+python3 scripts/project.py setup
+python3 scripts/project.py checkpoint
+```
+
+To inspect the committed comparison without running long simulations:
+
+```sh
+python3 experiments/b0-full-inference-2026-11-03/collect.py --saved
+```
+
+The expected B0 / B1 / X1 / X2 / TPU full-inference CPU retired counts are
+**9,115,503,491 / 6,095,818,622 / 890,189,414 / 830,264,926 / 214,329,448**.
+The runs use the same synthetic input and pass 14 stage hashes and 1,000 final
+logits. Counts are Spike ISA measurements, not hardware speedups.
+
+| Entry | Role |
+|---|---|
+| `experiments/deit-full-int8/` | Full model, export/reference, bare-metal runtime |
+| `experiments/tflm-linear/` | Shared blocked Linear and GELU kernel |
+| `experiments/qmac8-requant-spike/` | Custom instruction definitions, Spike handlers and tests |
+| `experiments/tpu-spike/` | Optional functional tile extension and tests |
+| `experiments/b0-full-inference-2026-11-03/` | B0 measurement and five-stage collector |
+| `experiments/x1-qmac-inference-2026-11-03/` | qmac-only X1 measurement and kernel checks |
+| `results/incremental-inference-2026-11-03/` | Compact measurements and logs |
+| Presentation | Maintained locally; slide files are not tracked in Git |
+
+
 Bare-metal quantized inference for the NTHU EE6455 advanced computer architecture
 project. This repository implements two experimental RISC-V instructions in
 Spike, uses them from C/C++ kernels through LiteRT Micro (TFLM), and runs a
@@ -13,9 +52,89 @@ fusion reduces instructions by another **36.07%** and TFLM arena usage by
 measurements; hardware cycle speedup has not been measured.
 
 **Current milestone:** instruction semantics/tests, operator benchmarks and full
-synthetic-input inference are verified. CPU integration, technology-mapped
-area/timing, dataset accuracy and final slides/report remain open. The repository
-is a software/ISA checkpoint, not a claim that all final requirements are done.
+synthetic-input inference are verified, and the ISA checkpoint slides are ready.
+Dataset accuracy and later CV-Wally work remain open. This checkpoint does not
+require physical area, power or hardware timing measurements.
+
+## CV-Wally readiness audit (2026-11-03)
+
+The custom instruction paths are **not integrated into CV-Wally**. A
+reproducible test of the unchanged Wally controller RTL accepts ADDI, MUL
+and LD but rejects qmac8, requant8 and xtpu as illegal instructions. This
+is a decoder component test, not a full-core run. The tile command exists
+only as a functional Spike implementation; tile RTL, pipeline control and
+a cache/fault-aware memory interface remain open. The qmac standalone
+RTL is also not core integration. Keep TPU as an architectural exploration
+until an integrated Wally kernel and measured cycles/area establish the
+tradeoff. See [audit and reproduction](docs/cvw-compatibility-audit.md).
+
+## TPU branch experiment (2026-10-26)
+
+The `tpu` branch adds an optional 8×8 INT8 matrix engine in Spike and uses it
+through the same full-model Linear calls. Measured full inference falls from
+862,447,442 to 262,234,932 core retired instructions (**69.59% reduction;
+3.29× count ratio**), preserving all 14 stage hashes and 1000 final logits.
+Accelerator reads/writes are counted separately: combined logical reads fall,
+while combined logical writes increase. This is a functional prototype with
+analytical timing assumptions; no hardware speedup/area result is established.
+See [design, tradeoffs and reproduction](experiments/tpu-spike/README.md) and
+[raw comparison](results/tpu/comparison.json). Run `python3 scripts/project.py tpu`
+after completing the existing full-model setup. The default build uses qmac8.
+
+## Software ablation (2026-11-02)
+
+Inline Linear reduces full-model qmac instructions by 3.73% (862,447,442 to
+830,264,926). Reusing per-channel requant parameters across TPU tile rows plus
+inlining reduces the original TPU path by 18.27% (262,234,932 to 214,329,448).
+The final TPU path uses 74.19% fewer core instructions than the inlined qmac
+path. All comparisons preserve 14 stage hashes and 1000 final logits.
+These remain functional Spike results without RTL speedup/area evidence.
+See [controlled ablation and priorities](docs/tpu-software-evaluation.md).
+Optional build flags are `--inline-linear` and `--tpu --inline-linear --hoist-tpu`.
+
+## Inlining memory tradeoff
+
+The follow-up [memory audit](docs/inline-memory-evaluation.md) measures code,
+stack writes and I-cache sensitivity. qmac inline adds 152 code bytes for 3.73%
+fewer instructions, with no observed stack increase. On TPU after parameter
+reuse, inline adds 392 code bytes and 200 observed stack bytes for 2.68% fewer
+instructions. Prefer parameter reuse first and keep inline optional. Static
+data and arena usage stay unchanged. These remain functional measurements,
+without a hardware cycle claim or a worst-case stack bound.
+
+## Incremental complete-inference results (2026-11-03)
+
+| Stage | Full-model retired CPU instructions |
+|---|---:|
+| B0: unblocked scalar, separate GELU LUT | 9,115,503,491 |
+| B1: software-optimized scalar | 6,095,818,622 |
+| X1: B1 + qmac8 | 890,189,414 |
+| X2: X1 + requant8 | 830,264,926 |
+| TPU tile exploration | 214,329,448 |
+
+All use the same model and input and pass the reference checks. B0 uses a
+separate GELU lookup function within the existing block node; it is not an
+upstream builtin operator or a non-LUT GELU baseline. It passes stock Spike.
+The changes B0→B1 are combined, as are tile offload and parameter reuse in the
+TPU result. These are instruction counts, not measured hardware speedups.
+See [incremental comparison](docs/incremental-inference-comparison.md) and
+the locally maintained five-minute presentation.
+
+## Complete inference comparison (2026-11-03)
+
+The new scalar RV64IMC baseline retires **6,095,818,622** instructions for the
+complete model. Our full CPU design retires **830,264,926** (86.38% fewer),
+and the TPU tile extension retires **214,329,448** (another 74.19% fewer).
+The scalar control retains applicable B=4 blocking, fused GELU LUT and inline,
+while replacing packed MAC and custom requantization with scalar arithmetic.
+All three match the same 14 stage hashes and 1000 final logits. The scalar
+model also passes stock Spike with no custom extension loaded. These are
+instruction counts, not hardware speedups.
+
+Our CPU design includes qmac8, requant8, B=4 template register blocking,
+aligned packed loads/tail fallback, the INT8 GELU LUT, FC-to-GELU fusion and
+selective Linear inline. See [full definitions and evidence](docs/full-inference-comparison.md).
+The five-minute English presentation is maintained locally and is not tracked in Git.
 
 ## Contents
 
@@ -170,8 +289,9 @@ same integer reference.
 The ROI includes operator dispatch and diagnostic stage-hash checks. This is
 one synthetic input. All 1,000 logits match the project integer reference and
 14 intermediate 32-bit hashes match. Quantized top-1 is **38**, versus float
-top-1 **79**: there is no dataset accuracy claim. A scalar full-model comparison
-has not been measured, so no end-to-end speedup is reported.
+top-1 **79**: there is no dataset accuracy claim. The later scalar full-model
+comparison appears above and in docs/full-inference-comparison.md. Hardware
+cycle speedup remains unmeasured.
 
 ## 4. Reproduce the results
 
@@ -205,7 +325,7 @@ troubleshooting](docs/reproduction.md).
 ### 4.2 Clone, set up, test and measure
 
 ```sh
-git clone git@github.com:ScGong04/Neural_Accelerator.git
+git clone git@github.com:lvcidnu11/Neural_Accelerator.git
 cd Neural_Accelerator
 python3 scripts/project.py setup
 python3 scripts/project.py test
@@ -224,6 +344,7 @@ For an existing checkout, start in its repository root. After setup, use
 | `test` | Actual Spike ISA tests and trap controls; host UBSan + Spike tail/blocking/fusion checks |
 | `bench` | Scalar/qmac/requant FC profiles, FC1→GELU comparison, B=1/2/4 × fusion ablations |
 | `full` | Graph export, host + UBSan checks, RV64IMC build, Spike correctness/profile |
+| `checkpoint` | Tests and complete B0/B1/X1/X2/TPU inference comparison with fresh results |
 | `publish_results.py` | Small path-sanitized JSON evidence in `results/reproduced/` |
 
 Run stages in order for the full evidence set. `full` can also run after setup:
@@ -307,15 +428,14 @@ the shared kernel rather than the historical standalone kernels.
 
 ## 7. Limitations and next milestones
 
-1. Establish the assignment's software-optimized **scalar B1** and a structured
-   comparative second-operator study. Template blocking B=1 is not scalar B1.
-2. Add full-model operator attribution and a fair scalar full-model baseline.
+1. Extend the measured software-optimized scalar B1 study with a structured
+   second-operator comparison. Template blocking B=1 is not scalar B1.
+2. Add finer full-model operator attribution. The optimized scalar full-model baseline is now measured.
 3. Calibrate/evaluate on representative images; current synthetic scales and
    differing float/quantized top-1 cannot support accuracy claims.
-4. Integrate the instructions into CV-Wally, verify operand hazards/retirement,
-   measure cycles/CPI, and synthesize using the required technology library.
-   Standalone RTL generic cell counts are not SAED physical area or CPU speedup.
-5. Complete slides and the final report using those measurements.
+4. For any later CV-Wally work, integrate and verify the instructions before
+   measuring hardware performance or area. This is outside the ISA checkpoint.
+5. Complete any later course report according to the instructor’s requirements.
 
 The [assignment](rv64imc_quantized_nn_term_project.md),
 [requirement checklist](docs/requirements.md),

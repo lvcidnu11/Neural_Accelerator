@@ -4,6 +4,22 @@ All numbers below come from committed `results/reproduced/*.json`, measured
 on 2026-10-25. They are functional Spike counts, not hardware cycle speedups.
 See [EXPERIMENTS.md](../EXPERIMENTS.md) for ROI and metric definitions.
 
+## Complete inference comparison (2026-11-03)
+
+The new scalar RV64IMC baseline retires **6,095,818,622** instructions for the
+complete model. Our full CPU design retires **830,264,926** (86.38% fewer),
+and the TPU tile extension retires **214,329,448** (another 74.19% fewer).
+The scalar control retains applicable B=4 blocking, fused GELU LUT and inline,
+while replacing packed MAC and custom requantization with scalar arithmetic.
+All three match the same 14 stage hashes and 1000 final logits. The scalar
+model also passes stock Spike with no custom extension loaded. These are
+instruction counts, not hardware speedups.
+
+Our CPU design includes qmac8, requant8, B=4 template register blocking,
+aligned packed loads/tail fallback, the INT8 GELU LUT, FC-to-GELU fusion and
+selective Linear inline. See [full definitions and evidence](full-inference-comparison.md).
+The five-minute English presentation is maintained locally and is not tracked in Git.
+
 ## Full FC1: instruction work and memory instructions
 
 M=197, K=192, N=768; 29,048,832 mathematical MACs. The ROI is TFLM Invoke.
@@ -63,7 +79,7 @@ code and model constants.
 ## Full-model instruction mix
 
 Includes 12 complete Transformer blocks, dispatch and 14 diagnostic stage hashes.
-No full-model scalar baseline is present.
+This historical mix table covers the qmac path. The new complete-inference comparison above includes the scalar baseline.
 
 | Category | Retired instructions | Share |
 |---|---:|---:|
@@ -92,5 +108,5 @@ equal to shape-derived mathematical MACs.
 - Full-model host, UBSan and Spike match 1,000 integer-reference logits plus 14 stage hashes.
 - Intermediate hashes are 32-bit diagnostics; full intermediate byte comparisons are not claimed.
 - Current quantized top-1 38 differs from float top-1 79 on the synthetic input. No dataset accuracy is measured.
-- No hardware cycles/CPI/Fmax/physical area or full-model baseline speedup are reported.
+- Instruction-count ratios are now reported for the full model. Hardware cycles/CPI/Fmax/physical area and hardware speedup remain unmeasured.
 - Standalone RTL latency and generic cell counts are in [DESIGN.md](../DESIGN.md); they do not establish CPU speedup.

@@ -1,0 +1,1 @@
+COMMAND ["spike", "--isa=RV64IMC", "-m32", "--extlib=/Users/ddar/Documents/nthu-ee6455/project/experiments/tflm-linear/build/libqmac8.dylib", "--extension=xqmac8", "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/x1-qmac-inference-2026-11-03/build/x1-qmac/tests.elf"]

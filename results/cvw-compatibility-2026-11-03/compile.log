@@ -1,0 +1,5 @@
+COMMAND ["verilator", "--binary", "--timing", "--assert", "-Wno-fatal", "--top-module", "controller_probe", "--Mdir", "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/cvw-compatibility-2026-11-03/build/obj", "-o", "controller_probe", "-I/Users/ddar/Documents/nthu-ee6455/cvw/config/shared", "/Users/ddar/Documents/nthu-ee6455/cvw/src/cvw.sv", "/Users/ddar/Documents/nthu-ee6455/cvw/src/ieu/controller.sv", "/Users/ddar/Documents/nthu-ee6455/cvw/src/generic/flop/flopenrc.sv", "/Users/ddar/Documents/nthu-ee6455/cvw/src/generic/mux.sv", "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/cvw-compatibility-2026-11-03/build/controller_probe.sv"]
+make: Nothing to be done for `default'.
+- V e r i l a t i o n   R e p o r t: Verilator 5.050 2026-07-01 rev vUNKNOWN-built20260701
+- Verilator: Built from 0.000 MB sources in 0 modules, into 0.000 MB in 0 C++ files needing 0.000 MB
+- Verilator: Walltime 0.045 s (elab=0.000, cvt=0.000, bld=0.042); cpu 0.002 s on 1 threads; allocated 3.516 MB

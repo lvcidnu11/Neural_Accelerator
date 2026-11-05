@@ -1,146 +1,82 @@
 # RV64IMC W8A8 DeiT-Tiny Acceleration
 
-## ISA checkpoint: start here
+Complete bare-metal quantized DeiT-Tiny inference on RV64IMC, with qmac8,
+requant8 and an optional TPU-inspired tile command implemented in **Spike**.
+This main-branch results update covers ISA/software measurements only.
 
-This branch contains the complete bare-metal W8A8 DeiT-Tiny workload, model
-conversion, qmac8/requant8 Spike extensions, tests and incremental full-inference
-results. The seven-item checkpoint and the five-stage configuration definitions
-are in [docs/checkpoint.md](docs/checkpoint.md). This checkpoint does **not**
-require CV-Wally or PPA evaluation.
+## Primary result: complete-model instruction counts
 
-From the repository root, after installing the prerequisites in
-[docs/reproduction.md](docs/reproduction.md):
+**The baseline is 9.116 billion retired instructions. The final TPU path is
+0.214 billion.** All five stages run the same 12-block model, quantization and
+synthetic input, and pass 14 stage hashes and all 1,000 final integer logits.
+
+<!-- SPIKE_RESULTS_START -->
+
+| Stage | Configuration | CPU retired instructions | Useful MAC / CPU instruction | Count ratio vs B0 |
+|---|---|---:|---:|---:|
+| B0 | Scalar B=1; separate GELU LUT; software requant; no inline | 9,115,503,491 | 0.1375 | 1.00x |
+| B1 | Scalar B=4; fused GELU LUT; Linear inline | 6,095,818,622 | 0.2057 | 1.50x |
+| X1 | B1 + qmac8; software requant | 890,189,414 | 1.4083 | 10.24x |
+| X2 | X1 + requant8 | 830,264,926 | 1.5100 | 10.98x |
+| TPU | Tile offload + requant8; parameter reuse + inline | 214,329,448 | 5.8493 | 42.53x |
+
+<!-- SPIKE_RESULTS_END -->
+
+The model has **1,253,683,200 useful mathematical MACs**. MAC/instruction is
+useful model MACs divided by **CPU retired instructions**; for TPU the numerator
+includes offloaded work. The 42.53x B0/TPU count ratio is an ISA-level result,
+not a measured cycle or wall-clock speedup. Dataset accuracy is not established.
+
+B0 is the unblocked scalar baseline with separate GELU LUT and software requant.
+B1 combines B=4 blocking, FC/GELU fusion and Linear inline. X1 adds qmac8;
+X2 adds requant8. The final TPU row includes tile offload, CPU parameter reuse
+and inline. All use the same INT8 GELU boundary; B0 is not a non-LUT baseline.
+
+**Read the [complete Spike results overview](docs/spike-results.md)** for
+MAC/instruction, software ablations, FC1-only experiments, memory traffic,
+source hashes and measurement boundaries. The data are also available as
+[JSON](results/spike-summary.json).
+
+The older **862-million qmac / 262-million TPU** numbers are pre-inline/hoist
+software variants. The **239-million FC1** number covers one operator. They
+are supporting experiments and do not replace the 9.116-billion full-model B0.
+
+## Reproduce or inspect saved evidence
+
+After installing prerequisites from [docs/reproduction.md](docs/reproduction.md):
 
 ```sh
 python3 scripts/project.py setup
 python3 scripts/project.py checkpoint
 ```
 
-To inspect the committed comparison without running long simulations:
+To inspect and verify committed measurements without running long simulations:
 
 ```sh
+python3 scripts/summarize_spike_results.py --check
 python3 experiments/b0-full-inference-2026-11-03/collect.py --saved
 ```
 
-The expected B0 / B1 / X1 / X2 / TPU full-inference CPU retired counts are
-**9,115,503,491 / 6,095,818,622 / 890,189,414 / 830,264,926 / 214,329,448**.
-The runs use the same synthetic input and pass 14 stage hashes and 1,000 final
-logits. Counts are Spike ISA measurements, not hardware speedups.
+This documentation update assembles saved Spike measurements; it does not
+claim a fresh full-model run. Build outputs, dependencies and model weights
+are ignored and recreated by the pinned scripts. No CV-Wally/RTL cycle results
+are included in the overview.
 
 | Entry | Role |
 |---|---|
-| `experiments/deit-full-int8/` | Full model, export/reference, bare-metal runtime |
-| `experiments/tflm-linear/` | Shared blocked Linear and GELU kernel |
-| `experiments/qmac8-requant-spike/` | Custom instruction definitions, Spike handlers and tests |
-| `experiments/tpu-spike/` | Optional functional tile extension and tests |
-| `experiments/b0-full-inference-2026-11-03/` | B0 measurement and five-stage collector |
-| `experiments/x1-qmac-inference-2026-11-03/` | qmac-only X1 measurement and kernel checks |
-| `results/incremental-inference-2026-11-03/` | Compact measurements and logs |
-| Presentation | Maintained locally; slide files are not tracked in Git |
-
-
-Bare-metal quantized inference for the NTHU EE6455 advanced computer architecture
-project. This repository implements two experimental RISC-V instructions in
-Spike, uses them from C/C++ kernels through LiteRT Micro (TFLM), and runs a
-complete 12-block DeiT-Tiny graph with a project integer reference.
-
-**Measured result:** on the full FC1 operator, `qmac8 + requant8` reduces retired
-instructions by **88.94%** versus upstream TFLM FC (**9.04× instruction-count
-ratio**). In a separate matched-kernel study, register blocking plus FC1/GELU
-fusion reduces instructions by another **36.07%** and TFLM arena usage by
-**36.69%**. These are functional Spike instruction counts and allocation
-measurements; hardware cycle speedup has not been measured.
-
-**Current milestone:** instruction semantics/tests, operator benchmarks and full
-synthetic-input inference are verified, and the ISA checkpoint slides are ready.
-Dataset accuracy and later CV-Wally work remain open. This checkpoint does not
-require physical area, power or hardware timing measurements.
-
-## CV-Wally readiness audit (2026-11-03)
-
-The custom instruction paths are **not integrated into CV-Wally**. A
-reproducible test of the unchanged Wally controller RTL accepts ADDI, MUL
-and LD but rejects qmac8, requant8 and xtpu as illegal instructions. This
-is a decoder component test, not a full-core run. The tile command exists
-only as a functional Spike implementation; tile RTL, pipeline control and
-a cache/fault-aware memory interface remain open. The qmac standalone
-RTL is also not core integration. Keep TPU as an architectural exploration
-until an integrated Wally kernel and measured cycles/area establish the
-tradeoff. See [audit and reproduction](docs/cvw-compatibility-audit.md).
-
-## TPU branch experiment (2026-10-26)
-
-The `tpu` branch adds an optional 8×8 INT8 matrix engine in Spike and uses it
-through the same full-model Linear calls. Measured full inference falls from
-862,447,442 to 262,234,932 core retired instructions (**69.59% reduction;
-3.29× count ratio**), preserving all 14 stage hashes and 1000 final logits.
-Accelerator reads/writes are counted separately: combined logical reads fall,
-while combined logical writes increase. This is a functional prototype with
-analytical timing assumptions; no hardware speedup/area result is established.
-See [design, tradeoffs and reproduction](experiments/tpu-spike/README.md) and
-[raw comparison](results/tpu/comparison.json). Run `python3 scripts/project.py tpu`
-after completing the existing full-model setup. The default build uses qmac8.
-
-## Software ablation (2026-11-02)
-
-Inline Linear reduces full-model qmac instructions by 3.73% (862,447,442 to
-830,264,926). Reusing per-channel requant parameters across TPU tile rows plus
-inlining reduces the original TPU path by 18.27% (262,234,932 to 214,329,448).
-The final TPU path uses 74.19% fewer core instructions than the inlined qmac
-path. All comparisons preserve 14 stage hashes and 1000 final logits.
-These remain functional Spike results without RTL speedup/area evidence.
-See [controlled ablation and priorities](docs/tpu-software-evaluation.md).
-Optional build flags are `--inline-linear` and `--tpu --inline-linear --hoist-tpu`.
-
-## Inlining memory tradeoff
-
-The follow-up [memory audit](docs/inline-memory-evaluation.md) measures code,
-stack writes and I-cache sensitivity. qmac inline adds 152 code bytes for 3.73%
-fewer instructions, with no observed stack increase. On TPU after parameter
-reuse, inline adds 392 code bytes and 200 observed stack bytes for 2.68% fewer
-instructions. Prefer parameter reuse first and keep inline optional. Static
-data and arena usage stay unchanged. These remain functional measurements,
-without a hardware cycle claim or a worst-case stack bound.
-
-## Incremental complete-inference results (2026-11-03)
-
-| Stage | Full-model retired CPU instructions |
-|---|---:|
-| B0: unblocked scalar, separate GELU LUT | 9,115,503,491 |
-| B1: software-optimized scalar | 6,095,818,622 |
-| X1: B1 + qmac8 | 890,189,414 |
-| X2: X1 + requant8 | 830,264,926 |
-| TPU tile exploration | 214,329,448 |
-
-All use the same model and input and pass the reference checks. B0 uses a
-separate GELU lookup function within the existing block node; it is not an
-upstream builtin operator or a non-LUT GELU baseline. It passes stock Spike.
-The changes B0→B1 are combined, as are tile offload and parameter reuse in the
-TPU result. These are instruction counts, not measured hardware speedups.
-See [incremental comparison](docs/incremental-inference-comparison.md) and
-the locally maintained five-minute presentation.
-
-## Complete inference comparison (2026-11-03)
-
-The new scalar RV64IMC baseline retires **6,095,818,622** instructions for the
-complete model. Our full CPU design retires **830,264,926** (86.38% fewer),
-and the TPU tile extension retires **214,329,448** (another 74.19% fewer).
-The scalar control retains applicable B=4 blocking, fused GELU LUT and inline,
-while replacing packed MAC and custom requantization with scalar arithmetic.
-All three match the same 14 stage hashes and 1000 final logits. The scalar
-model also passes stock Spike with no custom extension loaded. These are
-instruction counts, not hardware speedups.
-
-Our CPU design includes qmac8, requant8, B=4 template register blocking,
-aligned packed loads/tail fallback, the INT8 GELU LUT, FC-to-GELU fusion and
-selective Linear inline. See [full definitions and evidence](docs/full-inference-comparison.md).
-The five-minute English presentation is maintained locally and is not tracked in Git.
+| [Checkpoint checklist](docs/checkpoint.md) | Assignment deliverables and five-stage definitions |
+| [Full-model comparison](docs/incremental-inference-comparison.md) | B0/B1/X1/X2/TPU and correctness scope |
+| [Shared Linear kernel](experiments/tflm-linear/linear_kernel.h) | Blocking, aligned packed loads, scalar tails and fusion |
+| [qmac8/requant8](experiments/qmac8-requant-spike/) | ISA semantics, Spike handlers, wrappers and tests |
+| [TPU tile extension](experiments/tpu-spike/) | Functional tile command and separate engine traffic accounting |
+| [Software ablations](docs/tpu-software-evaluation.md) | Inline and per-channel parameter reuse |
+| [Inlining memory study](docs/inline-memory-evaluation.md) | Code/stack/I-cache tradeoffs |
 
 ## Contents
 
 - [1. Workload and execution flow](#1-workload-and-execution-flow)
 - [2. Design choices](#2-design-choices)
-- [3. Measured improvements](#3-measured-improvements)
+- [3. Supporting experiments](#3-supporting-operator-and-historical-experiments)
 - [4. Reproduce the results](#4-reproduce-the-results)
 - [5. Correctness and measurement rules](#5-correctness-and-measurement-rules)
 - [6. Repository map](#6-repository-map)
@@ -195,7 +131,7 @@ The exact encodings, register overlap rules, arithmetic widths and traps are in
 [ISA.md](experiments/qmac8-requant-spike/ISA.md). [DESIGN.md](DESIGN.md) explains
 alternatives, assumptions and hardware implications.
 
-## 3. Measured improvements
+## 3. Supporting operator and historical experiments
 
 Evidence below comes from [reproduced profiles](results/reproduced/) verified
 from this course repository on **2026-10-25**. Raw JSON is retained alongside
@@ -206,7 +142,7 @@ Reduction is `1 - new / baseline`; instruction-count ratio is `baseline / new`.
 Every comparison within a table uses the same data, quantization and execution
 scope. Percentages from different baselines must not be added together.
 
-### 3.1 Standalone ISA/kernel checkpoint
+### 3.1 Standalone ISA/kernel checkpoint (not full-model B0)
 
 Model-derived FC tile: **M=2, K=192, N=8**, 3,072 mathematical MACs.
 PATH GCC 16.2.0, O2, same standalone C driver and reference checks.
@@ -275,7 +211,7 @@ B=4 hot loop, with no stack access inside that loop. Function entry/exit and
 outer loops can still access the stack. All 151,296 final outputs match the
 same integer reference.
 
-### 3.5 Complete inference: integration result
+### 3.5 Historical complete inference: before Linear inline
 
 | Metric | Optimized full DeiT-Tiny |
 |---|---:|
@@ -289,8 +225,8 @@ same integer reference.
 The ROI includes operator dispatch and diagnostic stage-hash checks. This is
 one synthetic input. All 1,000 logits match the project integer reference and
 14 intermediate 32-bit hashes match. Quantized top-1 is **38**, versus float
-top-1 **79**: there is no dataset accuracy claim. The later scalar full-model
-comparison appears above and in docs/full-inference-comparison.md. Hardware
+top-1 **79**: there is no dataset accuracy claim. The primary five-stage full-model
+comparison is at the top of this README and in docs/spike-results.md. Hardware
 cycle speedup remains unmeasured.
 
 ## 4. Reproduce the results

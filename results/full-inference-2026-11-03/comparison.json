@@ -42,5 +42,7 @@
     "CPU instruction counts are not measured hardware speedup",
     "One synthetic input, no representative calibration/accuracy",
     "No integrated RTL cycles/CPI/Fmax/SAED area"
-  ]
+  ],
+  "baseline_stage": "B1",
+  "primary_five_stage_comparison": "../incremental-inference-2026-11-03/comparison.json"
 }

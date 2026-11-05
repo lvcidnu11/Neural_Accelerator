@@ -1,3 +1,6 @@
+> Historical inline/hoist ablations. For the complete B0 → B1 → X1 → X2 → TPU
+> progression (9.116 billion → 0.214 billion), use the [Spike results overview](spike-results.md).
+
 # TPU and software evaluation, 2026-11-02
 
 ## Decision

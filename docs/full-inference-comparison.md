@@ -1,4 +1,8 @@
-# Complete-inference comparison for the five-minute presentation
+> This three-stage study starts from software-optimized scalar B1 (6.096 billion),
+> not unoptimized B0. The primary five-stage comparison starts at B0 (9.116 billion):
+> [complete Spike overview](spike-results.md).
+
+# Historical full-inference comparison starting from scalar B1
 
 ## Scope and controls
 
@@ -12,8 +16,7 @@ GCC 15.2.0, O2, RV64IMC/lp64 and the TFLM library remain fixed.
 The scalar baseline uses direct INT8 scalar multiply/add and software fixed-point
 requantization. It retains B=4 input reuse, the same GELU LUT/fusion and Linear
 inlining. It does not inefficiently emulate packed qmac8 by shifting registers.
-This is an optimized scalar ISA control, corresponding more closely to B1
-than an unoptimized B0. The full-model scalar control is newly measured here.
+This is an optimized scalar ISA control, corresponding to the five-stage comparison's B1, not its unoptimized B0. This study was measured on 2026-11-03.
 Earlier 862M and 830M configurations already use qmac8/requant8 and must not
 be labeled as a scalar baseline.
 

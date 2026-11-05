@@ -7,35 +7,50 @@
       "stage": "B0",
       "definition": "Scalar B=1, software requant, separate GELU LUT; no Linear inline",
       "retired": 9115503491,
-      "source": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/b0-full-inference-2026-11-03/build/scalar-b0/result.json",
+      "mathematical_macs": 1253683200,
+      "macs_per_retired_instruction": 0.1375330722255548,
+      "instruction_count_ratio_vs_B0": 1.0,
+      "source": "results/incremental-inference-2026-11-03/b0.json",
       "source_sha256": "4251f7d48baa0852b249a9d42f114ac3e778e184b262a046f59d5e9f775b5b7a"
     },
     {
       "stage": "B1",
       "definition": "Scalar B=4, fused GELU LUT, Linear inline",
       "retired": 6095818622,
-      "source": "/Users/ddar/Documents/nthu-ee6455/project/results/full-inference-2026-11-03/scalar.json",
+      "mathematical_macs": 1253683200,
+      "macs_per_retired_instruction": 0.20566281212426796,
+      "instruction_count_ratio_vs_B0": 1.495369868470473,
+      "source": "results/full-inference-2026-11-03/scalar.json",
       "source_sha256": "1312ec6286a3f600dbf561ea8bf9f223290009d2cf92b887b7bb984aa4d83fea"
     },
     {
       "stage": "X1",
       "definition": "B1 + qmac8; software requant",
       "retired": 890189414,
-      "source": "/Users/ddar/.codex/.chatgpt-projects/g-p-6a9e1ed06dfc81919c51d356e30bb059/experiments/x1-qmac-inference-2026-11-03/build/x1-qmac/result.json",
+      "mathematical_macs": 1253683200,
+      "macs_per_retired_instruction": 1.4083330808964214,
+      "instruction_count_ratio_vs_B0": 10.239959437441703,
+      "source": "results/incremental-inference-2026-11-03/x1.json",
       "source_sha256": "52562bb108f09490141873913567e57e94fe7c95ae5caad2c595b832f81f9a73"
     },
     {
       "stage": "X2",
       "definition": "X1 + requant8",
       "retired": 830264926,
-      "source": "/Users/ddar/Documents/nthu-ee6455/project/results/full-inference-2026-11-03/cpu-design.json",
+      "mathematical_macs": 1253683200,
+      "macs_per_retired_instruction": 1.509979719413078,
+      "instruction_count_ratio_vs_B0": 10.97902995242268,
+      "source": "results/full-inference-2026-11-03/cpu-design.json",
       "source_sha256": "68cd07fefca2dbdf251c6d1c85261b65ba6e9055186ff7cb813998a5bb950ff3"
     },
     {
       "stage": "TPU",
       "definition": "Tile dot command + requant8; CPU parameter reuse + inline",
       "retired": 214329448,
-      "source": "/Users/ddar/Documents/nthu-ee6455/project/results/full-inference-2026-11-03/tpu.json",
+      "mathematical_macs": 1253683200,
+      "macs_per_retired_instruction": 5.84932780678836,
+      "instruction_count_ratio_vs_B0": 42.530336246655196,
+      "source": "results/full-inference-2026-11-03/tpu.json",
       "source_sha256": "ce0de13ef47f000b648e6970819da3c7f3af5a56b839dc13075aa98a709881cd"
     }
   ],
@@ -43,6 +58,6 @@
     "B0 GELU LUT is shared for equal functionality; separate function inside same custom node, not a separate TFLM node",
     "One synthetic input, no dataset accuracy",
     "Spike CPU retired instructions are not hardware cycles or speedup",
-    "TPU engine has no integrated CV-Wally RTL"
+    "This comparison contains functional Spike measurements only; no RTL cycles or hardware speedup claims"
   ]
 }

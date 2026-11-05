@@ -51,6 +51,10 @@ without disabling correctness checks.
 
 ## Expected full-inference results
 
+B0 is the 9.116-billion unblocked scalar baseline; B1 is its software-optimized
+6.096-billion stage. For useful MAC/instruction and the supporting ablations,
+see the [Spike results overview](spike-results.md).
+
 | Configuration | CPU retired instructions |
 |---|---:|
 | B0: scalar, B=1, separate GELU LUT | 9,115,503,491 |

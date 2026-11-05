@@ -1,24 +1,32 @@
+> These operator and earlier integration results have different scopes.
+> The primary complete-model baseline is B0 = 9,115,503,491 instructions;
+> the final TPU path is 214,329,448. See the [Spike results overview](spike-results.md)
+> for the five-stage comparison and useful MAC/instruction.
+
 # Measured results and interpretation
 
 All numbers below come from committed `results/reproduced/*.json`, measured
 on 2026-10-25. They are functional Spike counts, not hardware cycle speedups.
 See [EXPERIMENTS.md](../EXPERIMENTS.md) for ROI and metric definitions.
 
-## Complete inference comparison (2026-11-03)
+## Complete inference: B0 to TPU (Spike)
 
-The new scalar RV64IMC baseline retires **6,095,818,622** instructions for the
-complete model. Our full CPU design retires **830,264,926** (86.38% fewer),
-and the TPU tile extension retires **214,329,448** (another 74.19% fewer).
-The scalar control retains applicable B=4 blocking, fused GELU LUT and inline,
-while replacing packed MAC and custom requantization with scalar arithmetic.
-All three match the same 14 stage hashes and 1000 final logits. The scalar
-model also passes stock Spike with no custom extension loaded. These are
-instruction counts, not hardware speedups.
+The primary baseline is unblocked scalar **B0 = 9,115,503,491**.
+All stages run the same complete model, quantization and input and pass fourteen
+stage hashes and all 1,000 final integer logits. Useful mathematical MACs total
+1,253,683,200; no cycle speedup is inferred.
 
-Our CPU design includes qmac8, requant8, B=4 template register blocking,
-aligned packed loads/tail fallback, the INT8 GELU LUT, FC-to-GELU fusion and
-selective Linear inline. See [full definitions and evidence](full-inference-comparison.md).
-The five-minute English presentation is maintained locally and is not tracked in Git.
+| Stage | CPU retired instructions | Useful MAC / CPU instruction |
+|---|---:|---:|
+| B0 | 9,115,503,491 | 0.1375 |
+| B1 | 6,095,818,622 | 0.2057 |
+| X1 | 890,189,414 | 1.4083 |
+| X2 | 830,264,926 | 1.5100 |
+| TPU | 214,329,448 | 5.8493 |
+
+B1 = 6,095,818,622 is software-optimized scalar, not B0. The 862M qmac
+and 262M TPU variants are pre-inline/hoist ablations. See the
+[full Spike overview](spike-results.md) for definitions and all software ablations.
 
 ## Full FC1: instruction work and memory instructions
 
@@ -49,9 +57,9 @@ claim that only scalar multiply instructions were removed.
 | Full FC1: scalar → qmac8 | 239,507,000 | 32,997,457 | 86.22% | 7.2583× |
 | Full FC1: qmac8 → qmac8/requant8 | 32,997,457 | 26,491,730 | 19.72% | 1.2456× |
 | Full FC1: scalar → qmac8/requant8 | 239,507,000 | 26,491,730 | 88.94% | 9.0408× |
-| Shared FC1→GELU: B1 separate → B4 separate | 26,946,684 | 17,871,511 | 33.68% | 1.5078× |
-| Shared FC1→GELU: B4 separate → B4 fused | 17,871,511 | 17,228,262 | 3.60% | 1.0373× |
-| Shared FC1→GELU: B1 separate → B4 fused | 26,946,684 | 17,228,262 | 36.07% | 1.5641× |
+| Shared FC1→GELU: block=1 separate → block=4 separate | 26,946,684 | 17,871,511 | 33.68% | 1.5078× |
+| Shared FC1→GELU: block=4 separate → block=4 fused | 17,871,511 | 17,228,262 | 3.60% | 1.0373× |
+| Shared FC1→GELU: block=1 separate → block=4 fused | 26,946,684 | 17,228,262 | 36.07% | 1.5641× |
 
 The old TFLM adapter and shared-template B=1 have different instruction counts.
 Do not treat the refactor difference as an isolated fusion or blocking benefit.

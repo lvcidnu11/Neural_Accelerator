@@ -21,7 +21,15 @@ qmac8/requant8 also still need core integration. The functional counts
 below do not demonstrate Wally performance. See the
 [compatibility audit](../../docs/cvw-compatibility-audit.md).
 
-## Measured full-inference comparison
+## Primary complete-model result
+
+The final optimized TPU path retires **214,329,448** CPU instructions, compared
+with unoptimized scalar B0 **9,115,503,491**. The five-stage comparison and
+MAC/instruction definitions are in the [Spike overview](../../docs/spike-results.md).
+The 262,234,932 result below is the original pre-hoist/pre-inline TPU variant;
+its 862,447,442 comparator is an earlier qmac variant, not B0.
+
+## Historical full-inference comparison
 
 2026-10-26; xPack GCC 15.2.0, O2, RV64IMC/lp64, same TFLM library/model/input.
 The interval includes Invoke, all 14 stage-hash checks and dispatch, and

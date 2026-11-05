@@ -62,3 +62,10 @@ B0 retains a separate GELU LUT. The results do not establish RTL speedup.
 checklist, updated reproduction commands and paths, and prepared a separate
 checkpoint deck from the student's edited presentation. It corrected the chart
 unit, updated English notes and limited the checkpoint scope to ISA/Spike.
+
+2026-11-06 Spike results publication: Codex rebuilt the result overview from
+committed measurements, added derived useful MAC/CPU-retired-instruction metrics
+and source hashes, and made B0=9,115,503,491 through TPU=214,329,448 the primary
+comparison. It distinguished software-optimized B1, historical inline/hoist
+variants and FC1-only experiments. This update does not rerun the full model
+or publish CV-Wally/RTL experiments.

@@ -1,0 +1,193 @@
+{
+  "updated": "2026-11-06",
+  "measurement_scope": "Functional Spike CPU retired instructions; saved measurements, not a new full-model rerun",
+  "model_sha256": "958de3ce3f1b421a6de6c25d2c132f46ae09d1728b000586a7e0848118a6ed01",
+  "input_sha256": "3325824ca88991b5714d63f46474418805015cd2bce9cea8ec6e3bef83820ecc",
+  "full_inference": [
+    {
+      "stage": "B0",
+      "definition": "Scalar B=1; separate GELU LUT; software requant; no inline",
+      "source": "results/incremental-inference-2026-11-03/b0.json",
+      "retired_instructions": 9115503491,
+      "mathematical_macs": 1253683200,
+      "macs_per_retired_instruction": 0.1375330722255548,
+      "instruction_count_ratio_vs_B0": 1.0,
+      "reduction_vs_previous": null,
+      "text_bytes": 76132
+    },
+    {
+      "stage": "B1",
+      "definition": "Scalar B=4; fused GELU LUT; Linear inline",
+      "source": "results/full-inference-2026-11-03/scalar.json",
+      "retired_instructions": 6095818622,
+      "mathematical_macs": 1253683200,
+      "macs_per_retired_instruction": 0.20566281212426796,
+      "instruction_count_ratio_vs_B0": 1.495369868470473,
+      "reduction_vs_previous": 0.3312691253951493,
+      "text_bytes": 77424
+    },
+    {
+      "stage": "X1",
+      "definition": "B1 + qmac8; software requant",
+      "source": "results/incremental-inference-2026-11-03/x1.json",
+      "retired_instructions": 890189414,
+      "mathematical_macs": 1253683200,
+      "macs_per_retired_instruction": 1.4083330808964214,
+      "instruction_count_ratio_vs_B0": 10.239959437441703,
+      "reduction_vs_previous": 0.8539672078189338,
+      "text_bytes": 77528
+    },
+    {
+      "stage": "X2",
+      "definition": "X1 + requant8",
+      "source": "results/full-inference-2026-11-03/cpu-design.json",
+      "retired_instructions": 830264926,
+      "mathematical_macs": 1253683200,
+      "macs_per_retired_instruction": 1.509979719413078,
+      "instruction_count_ratio_vs_B0": 10.97902995242268,
+      "reduction_vs_previous": 0.06731655876554832,
+      "text_bytes": 76824
+    },
+    {
+      "stage": "TPU",
+      "definition": "Tile offload + requant8; parameter reuse + inline",
+      "source": "results/full-inference-2026-11-03/tpu.json",
+      "retired_instructions": 214329448,
+      "mathematical_macs": 1253683200,
+      "macs_per_retired_instruction": 5.84932780678836,
+      "instruction_count_ratio_vs_B0": 42.530336246655196,
+      "reduction_vs_previous": 0.7418541464438545,
+      "text_bytes": 76540
+    }
+  ],
+  "fc1": [
+    {
+      "variant": "baseline",
+      "definition": "TFLM upstream FC",
+      "retired_instructions": 239507000,
+      "mathematical_macs": 29048832,
+      "macs_per_retired_instruction": 0.12128594153824314
+    },
+    {
+      "variant": "qmac_only",
+      "definition": "TFLM qmac8 + software requant",
+      "retired_instructions": 32997457,
+      "mathematical_macs": 29048832,
+      "macs_per_retired_instruction": 0.8803354755489188
+    },
+    {
+      "variant": "custom",
+      "definition": "TFLM qmac8 + requant8",
+      "retired_instructions": 26491730,
+      "mathematical_macs": 29048832,
+      "macs_per_retired_instruction": 1.0965245380350774
+    }
+  ],
+  "fc1_blocking_fusion": [
+    {
+      "blocking_factor": 1,
+      "fused": false,
+      "retired_instructions": 26946684,
+      "macs_per_retired_instruction": 1.0780113798046542,
+      "arena_used_bytes": 309584
+    },
+    {
+      "blocking_factor": 1,
+      "fused": true,
+      "retired_instructions": 26189963,
+      "macs_per_retired_instruction": 1.1091589552837475,
+      "arena_used_bytes": 196000
+    },
+    {
+      "blocking_factor": 2,
+      "fused": false,
+      "retired_instructions": 20745728,
+      "macs_per_retired_instruction": 1.40023198993065,
+      "arena_used_bytes": 309584
+    },
+    {
+      "blocking_factor": 2,
+      "fused": true,
+      "retired_instructions": 19913359,
+      "macs_per_retired_instruction": 1.4587610257013897,
+      "arena_used_bytes": 196000
+    },
+    {
+      "blocking_factor": 4,
+      "fused": false,
+      "retired_instructions": 17871511,
+      "macs_per_retired_instruction": 1.6254267476320272,
+      "arena_used_bytes": 309584
+    },
+    {
+      "blocking_factor": 4,
+      "fused": true,
+      "retired_instructions": 17228262,
+      "macs_per_retired_instruction": 1.6861150590814094,
+      "arena_used_bytes": 196000
+    }
+  ],
+  "full_inference_software_ablation": [
+    {
+      "variant": "qmac-control",
+      "retired_instructions": 862447442,
+      "macs_per_retired_instruction": 1.4536343189710568,
+      "text_bytes": 76672
+    },
+    {
+      "variant": "qmac-inline",
+      "retired_instructions": 830264926,
+      "macs_per_retired_instruction": 1.509979719413078,
+      "text_bytes": 76824
+    },
+    {
+      "variant": "tpu-control",
+      "retired_instructions": 262234932,
+      "macs_per_retired_instruction": 4.780763533059737,
+      "text_bytes": 76104
+    },
+    {
+      "variant": "tpu-inline",
+      "retired_instructions": 256453645,
+      "macs_per_retired_instruction": 4.88853726372265,
+      "text_bytes": 76520
+    },
+    {
+      "variant": "tpu-hoist",
+      "retired_instructions": 220234394,
+      "macs_per_retired_instruction": 5.692495060512664,
+      "text_bytes": 76148
+    },
+    {
+      "variant": "tpu-inline-hoist",
+      "retired_instructions": 214329448,
+      "macs_per_retired_instruction": 5.84932780678836,
+      "text_bytes": 76540
+    }
+  ],
+  "tpu_engine": {
+    "commands": 95225,
+    "padded_macs": 1255044864,
+    "logical_read_bytes": 322601216,
+    "logical_write_bytes": 23898544
+  },
+  "source_sha256": {
+    "results/reproduced/full-inference.json": "0b16fa2d66c1f2c0d4fedbfe403d0d3ac721908fa3ac1d95f8b888d63d7d8ac6",
+    "results/incremental-inference-2026-11-03/b0.json": "4251f7d48baa0852b249a9d42f114ac3e778e184b262a046f59d5e9f775b5b7a",
+    "results/full-inference-2026-11-03/scalar.json": "1312ec6286a3f600dbf561ea8bf9f223290009d2cf92b887b7bb984aa4d83fea",
+    "results/incremental-inference-2026-11-03/x1.json": "52562bb108f09490141873913567e57e94fe7c95ae5caad2c595b832f81f9a73",
+    "results/full-inference-2026-11-03/cpu-design.json": "68cd07fefca2dbdf251c6d1c85261b65ba6e9055186ff7cb813998a5bb950ff3",
+    "results/full-inference-2026-11-03/tpu.json": "ce0de13ef47f000b648e6970819da3c7f3af5a56b839dc13075aa98a709881cd",
+    "results/reproduced/fc1.json": "7735dade5a7ce7486e7d2109848189b4839d81d89eca50a2fa20c19429f40c10",
+    "results/reproduced/blocking-fusion.json": "9b473825e7352c76a59bbbbb159fae482646bfb2aac84c6991b2f8dc5df8979b",
+    "results/software-2026-11-02/comparison.json": "aec8ad227559077d6fb2ca46cde0be1c3f3e98a188e14046ffcca31f1f2dc96d"
+  },
+  "limitations": [
+    "Single synthetic input; no dataset accuracy claim",
+    "Instruction-count ratios are not cycle or wall-clock speedups",
+    "MAC/instruction uses useful mathematical model MACs divided by CPU retired instructions; TPU work is offloaded",
+    "Full-inference, FC1-only, and blocking/fusion studies have distinct scopes; ratios must not be combined",
+    "B0 to B1 combines blocking, fusion and inline; final TPU combines tile offload, parameter reuse and inline",
+    "No CV-Wally or RTL measurements are included"
+  ]
+}
